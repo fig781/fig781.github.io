@@ -3,14 +3,3 @@ X 2. add solid nav bar when in mobile view
 
 
 X 6. add ability to copy to clipboard for email
-
-
-
-8. write project section
-
-
-10. add text to about me
-11. add text to viewpoint section
-12. Organize any janky sections for mobile view
-12. organize any other jank looking sections
-13. host on github
