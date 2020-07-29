@@ -1,5 +1,2 @@
 
-X 2. add solid nav bar when in mobile view
 
-
-X 6. add ability to copy to clipboard for email
