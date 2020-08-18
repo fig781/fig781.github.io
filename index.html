@@ -166,13 +166,30 @@
   <div class="container pt-5" id="projectsSection">
     <h3 class="headings-custom">Projects</h3>
 
-    <div class="card">
+    <div class="card mb-4">
       <div class="card-body">
-        <h4 class="card-title">Learnfluent</h4>
+        <h4 class="card-title">Country Currency Information Search</h4>
+        <span class="badge badge-pill badge-success">Vue.js</span>
         <span class="badge badge-pill badge-danger">HTML</span>
         <span class="badge badge-pill badge-primary">CSS</span>
         <span class="badge badge-pill badge-warning">Javascript</span>
-        <p>Learnfluent is a chrome extension that helps you learn  a foreign language. First, you set the language that you want to learn. French, German, Spanish and Russian are the four languages you can choose from. Then, each day, you are given a new commonly used word in the language of your choice for you to practice.</p>
+        <p class="mt-2">This application uses the forex API from https://fcsapi.com/. You can add countries to the search queue and then search for all of them at once. For those countries, you will be shown the details of that country’s national currency. </p>
+        <h6 class="card-subtitle mb-2  ">What I Learned: </h6>
+        <p>This is the first application that I have made using Vue. This project taught me all the basics of Vue. It took a bit of time to fully understand the Vue directives (v-on, v-bind etc…) and how the script portion of the component was laid out. Once I understood these parts of Vue, then the rest was relatively easy. The concept of components and state are ubiquitous with React, but I enjoy Vue’s approach better. I found that I could create the same types of components that I have made in React, but in Vue, the same components had fewer lines of code. Overall, I am very happy with Vue. I plan on using it in all my future projects.</p>
+        <div class="project-buttons">
+          <a href="https://aden-eilers.com/vue-country-currency-information/" class="btn btn-primary" target="_blank">View Live</a>
+          <a href="https://github.com/fig781/vue-country-currency-information" class="btn btn-primary" target="_blank">Source Code</a>
+        </div> 
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Learnfluent - Chrome Extension for Foreign Languge Learning</h4>
+        <span class="badge badge-pill badge-danger">HTML</span>
+        <span class="badge badge-pill badge-primary">CSS</span>
+        <span class="badge badge-pill badge-warning">Javascript</span>
+        <p class="mt-2">Learnfluent is a chrome extension that helps you learn  a foreign language. First, you set the language that you want to learn. French, German, Spanish and Russian are the four languages you can choose from. Then, each day, you are given a new commonly used word in the language of your choice for you to practice.</p>
         <h6 class="card-subtitle mb-2  ">What I Learned: </h6>
         <p>I made this project primarily to learn how to integrate an existing API into my own work. Most of the extension changes dynamically with the day of the month and users can save their language preferences. Learning how to use the chrome API to create these functionalities was very exciting. I originally overengineered the extension. My first iteration was complicated and used more of the API functionality then was needed. Learning how to simplify the project design was also an important learning moment. </p>
         <div class="project-buttons">
