@@ -1,40 +1,38 @@
-html{
+html {
   font-family: 'Lato', sans-serif;
   scroll-behavior: smooth;
 }
 
 /* HERO SECTION*/
-.hero{
+.hero {
   background-image: url('../Images/heroImageBlue.png');
   height: 100vh;
   background-size: cover;
-  
 }
 
-.nav-custom{
+.nav-custom {
   padding-top: 2.5rem;
 }
 
-@media (max-width: 575px){
-  .nav-custom{
-    padding-top:0.5rem;
+@media (max-width: 575px) {
+  .nav-custom {
+    padding-top: 0.5rem;
   }
-  
 }
 
-.center{
+.center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
 
-@media (min-width: 992px){
-  .inner-center{
+@media (min-width: 992px) {
+  .inner-center {
     padding-left: 6.5rem;
   }
 }
-section h1{
+section h1 {
   letter-spacing: 8px;
   font-size: 4rem;
   color: white;
@@ -44,40 +42,38 @@ section h1{
 section h2 {
   line-height: 1.3;
   text-shadow: 1px 1px 1px black;
-  color:white;
+  color: white;
 }
 
 section h4 {
   color: whitesmoke;
   text-shadow: 1px 1px 1px black;
-
 }
 
-.gitlink-custom{
+.gitlink-custom {
   padding-right: 1rem;
 }
 
-.readmore{
+.readmore {
   position: absolute;
   top: 94%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
 
-.readmore-icon{
+.readmore-icon {
   font-size: 3rem;
 }
 
-
-.development-items{
-  padding-top:1rem;
+.development-items {
+  padding-top: 1rem;
 }
-.development-icons{
+.development-icons {
   height: 24px;
   width: 24px;
 }
 
-a{
+a {
   color: white;
   outline: none;
   text-decoration: none;
@@ -95,30 +91,33 @@ a:hover {
   outline: none;
 }
 
-.headings-custom{
+.headings-custom {
   padding-bottom: 1.5rem;
 }
-.project-buttons{
- 
+.project-buttons {
 }
 
-.badge-danger{
-  background-color: orangered;
+/* BADGES */
+.badge-danger {
+  background-color: rgb(255, 136, 0);
 }
 
-.badge-warning{
+.badge-warning {
   background-color: rgb(255, 230, 0);
 }
+.badge-purple {
+  background-color: slateblue;
+  color: white;
+}
 
-.resume-school{
+.resume-school {
   margin-bottom: 0px;
 }
 
-.link-icons{
+.link-icons {
   font-size: 2.5rem;
 }
 
-.footer{
+.footer {
   text-align: center;
 }
-
