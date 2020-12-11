@@ -110,6 +110,10 @@ a:hover {
   color: white;
 }
 
+.card-image{
+  max-height:350px;
+  object-fit: cover;
+}
 .resume-school {
   margin-bottom: 0px;
 }
