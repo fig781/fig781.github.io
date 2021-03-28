@@ -159,77 +159,96 @@
   <!-- PROJECTS -->
   <div class="container pt-5" id="projectsSection">
     <h3 class="headings-custom">Projects</h3>
+    <div class="row row-cols-1 row-cols-md-2">
 
-    <div class="card mb-4 shadow-sm border-dark">
-      <img src="/Images/codingstats.png" class="card-img-top card-image" alt="...">
-      <div class="card-body">
-        <h4 class="card-title">myCodingStats - Where new programmers can track their coding time</h4>
-        <span class="badge badge-pill badge-success">Vue.js</span>
-        <span class="badge badge-pill badge-danger">HTML</span>
-        <span class="badge badge-pill badge-info">CSS</span>
-        <span class="badge badge-pill badge-warning">Javascript</span>
-        <span class="badge badge-pill badge-success">Node.js</span>
-        <span class="badge badge-pill badge-success">Express.js</span>
-        <span class="badge badge-pill badge-primary">PostgreSQL</span>
-        <span class="badge badge-pill badge-purple">Heroku</span>
-        <h6 class="card-subtitle mb-2 mt-2">What I Learned:</h6>
-        <ul>
-          <li>Use Vuex and Vue Router</li>
-          <li>Build an API with Node and Express</li>
-          <li>Build a production database in PostgreSQL</li>
-          <li>Deploy an API and client on Heroku</li>
-          <li>Build a user authentication system from scratch (will use OAuth next time)</li>
-        </ul>
-        <div class="project-buttons">
-          <a href="https://www.mycodingstats.com" class="btn btn-primary" target="_blank">View Live</a>
-          <a href="https://github.com/fig781/Coding-Time-Tracker-Client" class="btn btn-primary" target="_blank">Client
-            Source Code</a>
+      <div class="col mb-4">
+        <div class="card shadow h-100">
+          <img src="/Images/codingstats.png" style="max-height: 200px;" class="card-img-top card-image" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">myCodingStats.com</h4>
+            <span class="badge badge-pill badge-success">Vue.js</span>
+            <span class="badge badge-pill badge-danger">HTML</span>
+            <span class="badge badge-pill badge-info">CSS</span>
+            <span class="badge badge-pill badge-warning">Javascript</span>
+            <span class="badge badge-pill badge-success">Node.js</span>
+            <span class="badge badge-pill badge-success">Express.js</span>
+            <span class="badge badge-pill badge-primary">PostgreSQL</span>
+            <span class="badge badge-pill badge-purple">Heroku</span>
+            <p class="card-text">
+              This is a fullstack site where people learning to program can track the time they spend each day learning to code.
+              You can track the time you spend on each project, and time spent using each technology.
+            </p>
+            <div class="project-buttons">
+              <a href="https://www.mycodingstats.com" class="btn btn-primary" target="_blank">View Live</a>
+              <a href="https://github.com/fig781/Coding-Time-Tracker-Client" class="btn btn-primary" target="_blank">Client
+                Source Code</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card mb-4 shadow-sm border-dark">
-      <img src="/Images/country-currency.png" class="card-img-top card-image" alt="...">
-      <div class="card-body">
-        <h4 class="card-title">Country Currency Information Search</h4>
-        <span class="badge badge-pill badge-success">Vue.js</span>
-        <span class="badge badge-pill badge-danger">HTML</span>
-        <span class="badge badge-pill badge-info">CSS</span>
-        <span class="badge badge-pill badge-warning">Javascript</span>
-        <h6 class="card-subtitle mb-2 mt-2">What I Learned:</h6>
-        <ul>
-          <li>All the basics of Vue (components, props, v-on, v-bind etc...)</li>
-          <li>Integrate an API into a frontend application</li>
-          <li>Develop a mobile compatable site</li>
-        </ul>
-        <div class="project-buttons">
-          <a href="https://aden-eilers.com/vue-country-currency-information/" class="btn btn-primary"
-            target="_blank">View Live</a>
-          <a href="https://github.com/fig781/vue-country-currency-information" class="btn btn-primary"
-            target="_blank">Source Code</a>
+
+      <div class="col mb-4">
+        <div class="card shadow h-100">
+          <img src="/Images/keyValueDb.png" style="max-height: 200px;" class="card-img-top card-image" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">A Key Value Database</h4>
+            <span class="badge badge-pill badge-success">Golang</span>
+            <p class="card-text">
+              This is an in-memory key value database similar to Redis (but a bit more basic). 
+              The program works by creating a TCP server on localhost:3332 that can then be connected to by a client.
+            </p>
+            <div class="project-buttons">
+              <a href="https://github.com/fig781/its-a-key-value-database" class="btn btn-primary"
+                target="_blank">Source Code</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="card shadow-sm border-dark">
-      <img src="/Images/learnfluent.png" class="card-img-top card-image" alt="...">
-      <div class="card-body">
-        <h4 class="card-title">
-          Learnfluent - Chrome Extension for foreign language learning
-        </h4>
-        <span class="badge badge-pill badge-danger">HTML</span>
-        <span class="badge badge-pill badge-info">CSS</span>
-        <span class="badge badge-pill badge-warning">Javascript</span>
-        <h6 class="card-subtitle mb-2 mt-2">What I Learned:</h6>
-        <ul>
-          <li>Javascript</li>
-          <li>Google's chrome extension API</li>
-          <li>All of the workings of a chrome extension</li>
-        </ul>
-        <div class="project-buttons">
-          <a href="https://chrome.google.com/webstore/detail/learnfluent/diffhlcafbihhmocdaknniaddfjefigh"
-            class="btn btn-primary" target="_blank">Chrome Store</a>
-          <a href="https://github.com/fig781/chromeExtensionWordADay" class="btn btn-primary" target="_blank">Source
-            Code</a>
+      <div class="col mb-4">
+        <div class="card shadow h-100">
+          <img src="/Images/country-currency.png" style="max-height: 200px;" class="card-img-top card-image" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">Country Currency Information Search</h4>
+            <span class="badge badge-pill badge-success">Vue.js</span>
+            <span class="badge badge-pill badge-danger">HTML</span>
+            <span class="badge badge-pill badge-info">CSS</span>
+            <span class="badge badge-pill badge-warning">Javascript</span>
+            <p class="card-text">
+              This is a website for learning about different country's currencies.
+              This application uses the forex API from https://fcsapi.com/ and lets you search for multiple country's currency information at once.
+            </p>
+            <div class="project-buttons">
+              <a href="https://aden-eilers.com/vue-country-currency-information/" class="btn btn-primary"
+                target="_blank">View Live</a>
+              <a href="https://github.com/fig781/vue-country-currency-information" class="btn btn-primary"
+                target="_blank">Source Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col mb-4">
+        <div class="card shadow  h-100">
+          <img src="/Images/learnfluent.png" style="max-height: 200px;" class="card-img-top card-image" alt="...">
+          <div class="card-body">
+            <h4 class="card-title">
+              Learnfluent - Chrome Extension for foreign language learning
+            </h4>
+            <span class="badge badge-pill badge-danger">HTML</span>
+            <span class="badge badge-pill badge-info">CSS</span>
+            <span class="badge badge-pill badge-warning">Javascript</span>
+            <p class="card-text">
+              This is a chrome extension that will help you learn a foreign language.
+              Each day you are given a new word from the language of your choice.
+            </p>
+            <div class="project-buttons">
+              <a href="https://chrome.google.com/webstore/detail/learnfluent/diffhlcafbihhmocdaknniaddfjefigh"
+                class="btn btn-primary" target="_blank">Chrome Store</a>
+              <a href="https://github.com/fig781/chromeExtensionWordADay" class="btn btn-primary" target="_blank">Source
+                Code</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -241,7 +260,7 @@
     <div class="row">
 
       <div class="col-md-4 mb-4">
-        <div class="card shadow-sm border-dark">
+        <div class="card shadow h-100">
           <div class="card-body">
             <h5 class="card-title">Trimble Hackathon 2020</h5>
             <h6 class="card-subtitle mb-2 text-muted">
@@ -265,7 +284,7 @@
       </div>
 
       <div class="col-md-4 mb-4">
-        <div class="card shadow-sm border-dark">
+        <div class="card shadow h-100">
           <div class="card-body">
             <h5 class="card-title">QuarantineHacks 2020</h5>
             <h6 class="card-subtitle mb-2 text-muted">
