@@ -36,18 +36,18 @@ section h1 {
   letter-spacing: 8px;
   font-size: 4rem;
   color: white;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 2px 2px 2px black;
 }
 
-section h2 {
-  line-height: 1.3;
-  text-shadow: 1px 1px 1px black;
-  color: white;
+section h3 {
+  text-shadow: 2px 2px 2px black;
+  color: whitesmoke;
 }
 
 section h4 {
   color: whitesmoke;
-  text-shadow: 1px 1px 1px black;
+  padding-top: 10px;
+  text-shadow: 2px 2px 2px black;
 }
 
 .gitlink-custom {
@@ -81,20 +81,26 @@ a {
 
 a:visited {
   color: white;
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
 }
 
 a:hover {
   color: rgb(176, 195, 209);
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
 }
 
 .headings-custom {
   padding-bottom: 1.5rem;
 }
-.project-buttons {
+
+.btn:hover {
+  transform: scale(0.97, 0.97);
+}
+
+.readmore-icon {
+  text-shadow: 1px 1px 1px black;
 }
 
 /* BADGES */
@@ -110,8 +116,8 @@ a:hover {
   color: white;
 }
 
-.card-image{
-  max-height:350px;
+.card-image {
+  max-height: 350px;
   object-fit: cover;
 }
 .resume-school {
