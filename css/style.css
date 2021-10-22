@@ -5,7 +5,8 @@ html {
 
 /* HERO SECTION*/
 .hero {
-  background-image: url('../Images/heroImageBlue.png');
+  background-image: url('../Images/layered-waves-haikei.svg');
+  background-color: #0017ff;
   height: 100vh;
   background-size: cover;
 }
@@ -32,26 +33,22 @@ html {
     padding-left: 6.5rem;
   }
 }
-section h1 {
+.hero h1 {
   letter-spacing: 8px;
   font-size: 4rem;
   color: white;
   text-shadow: 2px 2px 2px black;
 }
 
-section h3 {
+.hero h3 {
   text-shadow: 2px 2px 2px black;
   color: whitesmoke;
 }
 
-section h4 {
+.hero h4 {
   color: whitesmoke;
   padding-top: 10px;
   text-shadow: 2px 2px 2px black;
-}
-
-.gitlink-custom {
-  padding-right: 1rem;
 }
 
 .readmore {
@@ -64,9 +61,33 @@ section h4 {
 .readmore-icon {
   font-size: 3rem;
 }
+.custom-dev-cards-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+.custom-flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
-.development-items {
-  padding-top: 1rem;
+.custom-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: large;
+}
+
+.custom-card {
+  max-width: 500px;
 }
 .development-icons {
   height: 24px;
@@ -86,17 +107,23 @@ a:visited {
 }
 
 a:hover {
-  color: rgb(176, 195, 209);
+  color: white;
   text-decoration: none;
   outline: none;
 }
 
-.headings-custom {
-  padding-bottom: 1.5rem;
+.custom-link:hover {
+  color: #cbc4e5;
+}
+
+.btn {
+  border-radius: 30px;
+  background-color: #0017ff;
 }
 
 .btn:hover {
   transform: scale(0.97, 0.97);
+  background-color: #283afd;
 }
 
 .readmore-icon {
@@ -130,4 +157,19 @@ a:hover {
 
 .footer {
   text-align: center;
+}
+#contact-section {
+  background-color: #0017ff;
+  background-image: url('../Images/wave-haikei.svg');
+  background-size: cover;
+}
+
+#contact-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 200px;
 }
