@@ -1,29 +1,35 @@
+:root {
+  --bg-color: #2a4eff;
+}
+
 html {
-  font-family: 'Lato', sans-serif;
   scroll-behavior: smooth;
 }
 
 /* HERO SECTION*/
 .hero {
   background-image: url('../Images/layered-waves-haikei.svg');
-  background-color: #0017ff;
+  background-color: var(--bg-color);
   height: 100vh;
   background-size: cover;
 }
 
-.nav-custom {
-  padding-top: 2.5rem;
-}
-
-@media (max-width: 575px) {
-  .nav-custom {
-    padding-top: 0.5rem;
+@media (max-width: 576px) {
+  #navbar1 {
+    z-index: 1;
+    background-color: var(--bg-color);
+    border: 1px solid grey;
+    border-radius: 15px;
+  }
+  #navbar1 a {
+    padding-left: 15px;
+    font-weight: 500;
   }
 }
 
 .center {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
@@ -37,18 +43,17 @@ html {
   letter-spacing: 8px;
   font-size: 4rem;
   color: white;
-  text-shadow: 2px 2px 2px black;
 }
 
 .hero h3 {
-  text-shadow: 2px 2px 2px black;
   color: whitesmoke;
+  font-family: ff-tisa-sans-web-pro, sans-serif;
+  font-weight: 600;
 }
 
 .hero h4 {
   color: whitesmoke;
-  padding-top: 10px;
-  text-shadow: 2px 2px 2px black;
+  font-family: ff-tisa-sans-web-pro, sans-serif;
 }
 
 .readmore {
@@ -65,8 +70,7 @@ html {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: center;
 }
 .custom-flex-container {
   display: flex;
@@ -74,7 +78,6 @@ html {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
 }
 
 .custom-item-container {
@@ -89,6 +92,7 @@ html {
 .custom-card {
   max-width: 500px;
 }
+
 .development-icons {
   height: 24px;
   width: 24px;
@@ -118,12 +122,12 @@ a:hover {
 
 .btn {
   border-radius: 30px;
-  background-color: #0017ff;
+  background-color: var(--bg-color);
 }
 
 .btn:hover {
   transform: scale(0.97, 0.97);
-  background-color: #283afd;
+  background-color: var(--bg-color);
 }
 
 .readmore-icon {
@@ -159,7 +163,7 @@ a:hover {
   text-align: center;
 }
 #contact-section {
-  background-color: #0017ff;
+  background-color: var(--bg-color);
   background-image: url('../Images/wave-haikei.svg');
   background-size: cover;
 }
