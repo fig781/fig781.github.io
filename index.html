@@ -68,11 +68,9 @@
   </section>
 
   <!-- DEVELOPMENT-->
-  <section class="container pt-5 " id="development">
-    <h3 class="mb-3">Development</h3>
-    <div class="custom-dev-cards-container">
-      
-      <div class="card shadow mb-3 custom-card">
+  <section class="container pt-5" id="development">
+    <h2 class="mb-3">Development</h2>
+      <div class="card shadow mb-3">
         <div class="card-body">
           <h4 class="card-title">Frontend</h4>
           <div class="custom-flex-container">
@@ -114,16 +112,15 @@
           </div>
         </div>
       </div>
-    </div>
 
     <div class="custom-dev-cards-container">
-      <div class="card shadow mb-3 mr-sm-3 custom-card" >
+      <div class="card shadow custom-card-size" >
         <div class="card-body">
           <h4 class="card-title">Backend</h4>
           <div class="custom-flex-container">
             <div class="custom-item-container">
               <img src="./Images/nodeIcon.png" class="development-icons" />
-              <div class="media-body">Node.js/Express.js</div>
+              <div class="media-body">Node.js/ Express.js</div>
             </div>
   
             <div class="custom-item-container">
@@ -139,7 +136,7 @@
         </div>
       </div>
   
-      <div class="card shadow mb-3 custom-card">
+      <div class="card shadow custom-card-size">
         <div class="card-body">
           <h4 class="card-title">Other</h4>
           <div class="custom-flex-container">
@@ -162,7 +159,7 @@
   </section>
   <!-- PROJECTS -->
   <div class="container pt-5" id="projectsSection">
-    <h3 class="mb-3">Projects</h3>
+    <h2 class="mb-3">Projects</h2>
     <div class="row row-cols-1 row-cols-md-2">
 
       <div class="col mb-4">
@@ -178,7 +175,7 @@
             <span class="badge badge-pill badge-success">Express.js</span>
             <span class="badge badge-pill badge-primary">PostgreSQL</span>
             <span class="badge badge-pill badge-purple">Heroku</span>
-            <p class="card-text">
+            <p class="card-text custom-margin-bottom">
               This is a fullstack site where people learning to program can track the time they spend each day learning to code.
               You can track the time you spend on each project, and time spent using each technology.
             </p>
@@ -203,7 +200,7 @@
             <span class="badge badge-pill badge-danger">HTML</span>
             <span class="badge badge-pill badge-info">Tailwind CSS</span>
             <span class="badge badge-pill badge-purple">PWA</span>
-            <p class="card-text">
+            <p class="card-text custom-margin-bottom">
               There are currently six sorting algorithms to visualize. The information and time/space complexity are shown for each algorithm. This site is also a progressive web app. 
             </p>
             <div class="project-buttons">
@@ -224,7 +221,7 @@
           <div class="card-body">
             <h4 class="card-title">A Key Value Database</h4>
             <span class="badge badge-pill badge-success">Golang</span>
-            <p class="card-text">
+            <p class="card-text custom-margin-bottom">
               This is an in-memory key value database similar to Redis (but a bit more basic). 
               The program works by creating a TCP server on localhost that can then be connected to by a client.
             </p>
@@ -246,7 +243,7 @@
             <span class="badge badge-pill badge-danger">HTML</span>
             <span class="badge badge-pill badge-info">CSS</span>
             <span class="badge badge-pill badge-warning">Javascript</span>
-            <p class="card-text">
+            <p class="card-text custom-margin-bottom">
               This is a website for learning about different country's currencies.
               This application uses the forex API from https://fcsapi.com/ and lets you search for multiple country's currency information at once.
             </p>
@@ -272,7 +269,7 @@
             <span class="badge badge-pill badge-danger">HTML</span>
             <span class="badge badge-pill badge-info">CSS</span>
             <span class="badge badge-pill badge-warning">Javascript</span>
-            <p class="card-text">
+            <p class="card-text custom-margin-bottom">
               This is a chrome extension that will help you learn a foreign language.
               Each day you are given a new word from the language of your choice.
             </p>
@@ -292,10 +289,10 @@
 
   <!-- HACKATHONS -->
   <div class="container pt-5" id="projectsSection">
-    <h3 class="mb-3">Hackathons</h3>
+    <h2 class="mb-3">Hackathons</h2>
     <div class="row">
 
-      <div class="col-md-4 mb-4">
+      <div class="col-md-6 mb-4">
         <div class="card shadow h-100">
           <div class="card-body">
             <h5 class="card-title">Trimble Hackathon 2020</h5>
@@ -304,7 +301,7 @@
             </h6>
             <span class="badge badge-pill badge-primary">C#</span>
             <span class="badge badge-pill badge-purple">ASP.Net</span>
-            <p class="card-text">
+            <p class="card-text mb-5">
               This is a console application that will bulk update the
               connection information of SAP Crystal report files. This will be
               used by Viewpoint engineers who are migrating on prem Vista
@@ -313,14 +310,16 @@
               process that could take days to complete. This process can now
               be completed in a few minutes.
             </p>
-            <button class="btn">
-              <a href="https://github.com/fig781/TrimbleHackathonCrystalProject" target="_blank">Source Code</a>
-            </button>
+            <div class="project-buttons">
+              <button class="btn">
+                <a href="https://github.com/fig781/TrimbleHackathonCrystalProject" target="_blank">Source Code</a>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="col-md-4 mb-4">
+      <div class="col-md-6 mb-4">
         <div class="card shadow h-100">
           <div class="card-body">
             <h5 class="card-title">QuarantineHacks 2020</h5>
@@ -331,7 +330,7 @@
             <span class="badge badge-pill badge-danger">HTML</span>
             <span class="badge badge-pill badge-info">CSS</span>
             <span class="badge badge-pill badge-danger">My SQL</span>
-            <p class="card-text">
+            <p class="card-text mb-5">
               We wrote python scripts to pull game data using the Riot Games
               API. We pulled information from 300,000 games. Regression
               analysis was performed on the game data. This information was
@@ -339,9 +338,11 @@
               database to a front end client to display this information, but
               we did not finish this part of the project.
             </p>
-            <button class="btn">
-              <a href="https://github.com/fig781/QurantineHacks2020Lol" target="_blank">Source Code</a>
-            </button>
+            <div class="project-buttons">
+              <button class="btn">
+                <a href="https://github.com/fig781/QurantineHacks2020Lol" target="_blank">Source Code</a>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -350,8 +351,8 @@
   </div>
 
   <!-- RESUME -->
-  <div class="container pt-5 pb-2">
-    <h3 class="mb-3">Resume</h3>
+  <div class="container pt-4 pb-2">
+    <h2 class="mb-3">Resume</h2>
     <h5>Education</h5>
     <div class="row">
       <div class="col-8">
@@ -438,7 +439,7 @@
   <div id="contact-section">
     <div class="container d-flex justify-content-center align-items-center pt-5 pb-5 " >
       <div id="contact-form" class="card p-3 my-4">
-        <h4 class="card-title">Get in Contact</h4>
+        <h3 class="card-title">Get in Contact</h3>
         <form>
           <div class="mb-3">
             <label for="form-name" class="form-label">Name</label>
