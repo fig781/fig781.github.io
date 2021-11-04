@@ -150,15 +150,12 @@ a:hover {
   }
 }
 
-.card-text {
-}
-
 .readmore-icon {
   text-shadow: 1px 1px 1px black;
 }
 
 /* BADGES */
-.badge-danger {
+/* .badge-danger {
   background-color: rgb(255, 136, 0);
 }
 
@@ -167,6 +164,11 @@ a:hover {
 }
 .badge-purple {
   background-color: slateblue;
+  color: white;
+} */
+
+.badge {
+  background-color: rgb(161, 161, 161);
   color: white;
 }
 
