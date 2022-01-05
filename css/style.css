@@ -124,11 +124,13 @@ a:hover {
 .btn {
   border-radius: 30px;
   background-color: var(--bg-color);
+  color: white;
 }
 
 .btn:hover {
   transform: scale(0.97, 0.97);
   background-color: var(--bg-color);
+  color: white;
 }
 
 .project-buttons {
