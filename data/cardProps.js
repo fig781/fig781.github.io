@@ -32,7 +32,15 @@ const cardProps = {
     title: 'My Personal Site',
     subHeader: null,
     img: '',
-    tags: ['Next.js', 'HTML', 'CSS', 'Javascript', 'Supabase', 'Bootstrap'],
+    tags: [
+      'Next.js',
+      'HTML',
+      'CSS',
+      'Javascript',
+      'Typescript',
+      'Supabase',
+      'Bootstrap',
+    ],
     text: 'This is my personal site. It is fully responsive, and includes a contact form and article page. Supabase is used to handle markdown document storage and delivery for articles. The site also utilizes Dev.to’s public api for article information.',
     btn1: {
       display: true,

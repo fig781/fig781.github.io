@@ -45,6 +45,11 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
+.email {
+  cursor: pointer;
+  width: fit-content;
+}
+
 @media (min-width: 992px) {
   .innerCenter {
     padding-left: 6.5rem;

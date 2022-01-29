@@ -7,7 +7,14 @@ import DisplayCard from '../components/DisplayCard'
 import ContactForm from '../components/ContactForm'
 import cardPropData from '../data/cardProps'
 
-import { Navbar, Container, Nav, Button } from 'react-bootstrap'
+import {
+  Navbar,
+  Container,
+  Nav,
+  Button,
+  OverlayTrigger,
+  Tooltip,
+} from 'react-bootstrap'
 
 import agileIcon from '../public/Images/agileIcon.png'
 import bootstrapIcon from '../public/Images/bootstrap.png'
@@ -40,6 +47,8 @@ export default function Home() {
   cardPropData.keyValueProps.img = keyValueDbImg
   cardPropData.currencyInfoProps.img = countryCurrencyImg
   cardPropData.learnfluentProps.img = learnFluentImg
+
+  const copyToClipboard = () => navigator.clipboard.writeText('adeneilers@gmail.com')
 
   return (
     <>
@@ -81,7 +90,16 @@ export default function Home() {
             </div>
             <div className='row'>
               <div className='col'>
-                <h4>adeneilers@gmail.com</h4>
+                <OverlayTrigger
+                  placement='right'
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={<Tooltip id='email-tooltip'>Copy to clipboard</Tooltip>}
+                >
+                  <h4 className={styles.email} onClick={copyToClipboard}>
+                    adeneilers@gmail.com
+                  </h4>
+                </OverlayTrigger>
+
                 <a
                   className={styles.linkIcons}
                   href='https://github.com/fig781'
