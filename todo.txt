@@ -1,6 +1,4 @@
- 5. Make email click copy it to your clipboard and have a little notification about this
- 2. improve the landing page, possibly add animation
- 3. Make skills section cleaner
- 4. add a contact form that send me an email
- 1. Ultimately have a more cohesive theme
-
+1. const form work
+2. hamburger work
+3. project image look right
+4. add article section

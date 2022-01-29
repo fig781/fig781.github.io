@@ -1,0 +1,15 @@
+.btnContact {
+  background-color: var(--bg-color);
+  color: white;
+}
+
+.btnContact:hover {
+  transform: scale(0.97, 0.97);
+  background-color: var(--bg-color);
+  color: white;
+}
+
+.formMessage {
+  padding-left: 15px;
+  margin-bottom: 0;
+}

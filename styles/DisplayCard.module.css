@@ -1,0 +1,40 @@
+.btnProjects {
+  background-color: var(--bg-color);
+  color: white;
+}
+
+.btnProjects:hover {
+  transform: scale(0.97, 0.97);
+  background-color: var(--bg-color);
+  color: white;
+}
+
+.projectButtons {
+  position: absolute;
+  bottom: 20px;
+  margin-right: 20px;
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.customMarginBottom {
+  margin-bottom: 48px;
+}
+@media (max-width: 332px) {
+  .customMarginBottom {
+    margin-bottom: 100px;
+  }
+}
+
+.badge {
+  background-color: rgb(209, 209, 209) !important;
+}
+
+.cardImage {
+  max-height: 250px;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+  object-fit: cover;
+}
