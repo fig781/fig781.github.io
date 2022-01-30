@@ -31,7 +31,9 @@ const DisplayCard = ({ cardInfo }) => {
             })}
           </div>
 
-          <p className={`${styles.customMarginBottom} card-text`}>{cardInfo.text}</p>
+          <p className={`${styles.customMarginBottom} card-text mt-3`}>
+            {cardInfo.text}
+          </p>
           <div className={styles.projectButtons}>
             {cardInfo.btn1.display && (
               <button className={`btn ${styles.btnProjects}`}>
