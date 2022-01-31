@@ -15,7 +15,11 @@
 .btnWhite:hover {
   transform: scale(0.97, 0.97);
   background-color: white;
-  color: var(--bg-color);
+  border: solid 1px white;
+}
+
+.btnWhite:hover a {
+  color: black;
 }
 
 .center {

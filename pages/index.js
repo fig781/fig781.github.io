@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import Link from 'next/link'
 
 import styles from '../styles/Home.module.css'
 import DisplayCard from '../components/DisplayCard'
 import ContactForm from '../components/ContactForm'
-import cardPropData from '../data/cardProps'
+import cardPropData from '../utils/cardProps'
 
 import {
   Navbar,
@@ -74,7 +74,11 @@ export default function Home() {
               </Nav>
             </Navbar.Collapse>
             <Nav className={styles.articleButtonNav}>
-              <Button className={`btn ${styles.btnWhite}`}>Articles</Button>
+              <Button className={`btn ${styles.btnWhite}`}>
+                <Link href='/articles'>
+                  <a>Articles</a>
+                </Link>
+              </Button>
             </Nav>
           </Container>
         </Navbar>
