@@ -6,7 +6,6 @@ import Login from '../components/Login';
 
 const Admin = () => {
   const [session, setSession] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setSession(supabase.auth.session());
@@ -16,11 +15,7 @@ const Admin = () => {
     });
   }, []);
 
-  return (
-    <Container>
-      {!session ? <Login /> : <ArticlesAdmin session={session} />}
-    </Container>
-  );
+  return <>{!session ? <Login /> : <ArticlesAdmin session={session} />}</>;
 };
 
 export default Admin;
