@@ -2,19 +2,22 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 
 const ArticlesAdminEditor = ({ show, onHide, article }) => {
-  //not working atm
-  const [title, setTitle] = useState(article.title);
-  const [description, setDescription] = useState(article.description);
-  const [tags, setTags] = useState(article.tags);
-  const [published, setPublished] = useState(article.published);
-  const [isVisable, setIsVisable] = useState(article.isVisable);
+  const { id, title, description, tags, published, isVisable } = article;
 
-  //https://reactjs.org/docs/hooks-faq.html#how-do-i-implement-getderivedstatefromprops
-  // article.title !== title && setTitle(article.title);
-  // article.description !== description && setDescription(article.description);
-  // article.tags !== tags && setTags(article.tags);
-  // article.published !== published && setPublished(article.published);
-  // article.isVisable !== isVisable && setIsVisable(article.isVisable);
+  const [titleInput, setTitleInput] = useState(title);
+  const [descriptionInput, setDescriptionInput] = useState(description);
+  const [tagsInput, setTagsInput] = useState(tags);
+  const [tag, setTag] = useState('');
+  const [publishedInput, setPublishedInput] = useState(published);
+  const [isVisableInput, setIsVisableInput] = useState(isVisable);
+
+  useEffect(() => {
+    setTitleInput(title);
+    setDescriptionInput(description);
+    setTagsInput(tags);
+    setPublishedInput(published);
+    setIsVisableInput(isVisable);
+  }, [title, description, tags, published, isVisable]);
 
   return (
     <Modal
@@ -24,7 +27,9 @@ const ArticlesAdminEditor = ({ show, onHide, article }) => {
       centered
       backdrop='static'>
       <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>Modal heading</Modal.Title>
+        <Modal.Title id='contained-modal-title-vcenter'>
+          {id ? 'Edit Article' : 'New Article'}
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -32,9 +37,8 @@ const ArticlesAdminEditor = ({ show, onHide, article }) => {
             <Form.Label>Title</Form.Label>
             <Form.Control
               type='text'
-              placeholder='Enter email'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              value={titleInput}
+              onChange={(e) => setTitleInput(e.target.value)}
             />
           </Form.Group>
 
@@ -43,16 +47,33 @@ const ArticlesAdminEditor = ({ show, onHide, article }) => {
             <Form.Control
               as='textarea'
               rows={2}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={descriptionInput}
+              onChange={(e) => setDescriptionInput(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formTags'>
+            <Form.Label>Tags</Form.Label>
+
+            <Button>Add</Button>
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formPublished'>
+            <label className='me-2' htmlFor='pulished'>
+              Published Date
+            </label>
+            <input
+              type='date'
+              name='published'
+              id='published'
+              value={publishedInput}
+              onChange={(e) => setPublishedInput(e.target.value)}
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formIsVisable'>
             <Form.Check
               type='switch'
               label='Visable?'
-              value={isVisable}
-              onChange={(e) => setIsVisable(e.target.value)}
+              checked={isVisableInput}
+              onChange={() => setIsVisableInput(!isVisableInput)}
             />
           </Form.Group>
           <Button variant='primary' type='submit'>
