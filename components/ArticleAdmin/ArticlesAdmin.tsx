@@ -1,21 +1,12 @@
-import { Button, Spinner, Container, Table, Badge } from 'react-bootstrap';
+import { Button, Spinner, Container, Table } from 'react-bootstrap';
 import Link from 'next/link';
-import { FaTrashAlt, FaPencilAlt, FaEyeSlash } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
-import { supabase } from '../utils/supabaseClient';
+import { supabase } from '../../utils/supabaseClient';
 import ArticlesAdminEditor from './ArticlesAdminEditor';
+import TableRow from '../ArticleAdmin/TableRow';
+import Article from '../../utils/types';
 
 const ArticlesAdmin = ({ session }) => {
-  type Article = {
-    id: number;
-    isVisable: boolean;
-    title: string;
-    description: string;
-    tags: string[];
-    published: string;
-    isDeleted: boolean;
-  };
-
   const defaultArticle: Article = {
     id: null,
     isVisable: true,
@@ -38,7 +29,8 @@ const ArticlesAdmin = ({ session }) => {
         let { data: articles, error } = await supabase
           .from('articles')
           .select('id,title,description,isVisable,tags,published,isDeleted')
-          .eq('isDeleted', 'false');
+          .eq('isDeleted', 'false')
+          .order('created_at', { ascending: false });
 
         articles.forEach((article) => {
           article.tags = article.tags.tags;
@@ -64,10 +56,9 @@ const ArticlesAdmin = ({ session }) => {
         .update({ isVisable: !isVisable })
         .eq('id', id);
       if (error) throw error;
-      console.log(data);
 
       let updatedArticles = articles.map((article) => {
-        if ((id = article.id)) {
+        if (id === article.id) {
           article['isVisable'] = data[0].isVisable;
         }
         return article;
@@ -108,35 +99,58 @@ const ArticlesAdmin = ({ session }) => {
     setCurrentArticle(article);
   };
 
-  const TableRow = ({ article }) => {
-    return (
-      <tr>
-        <td>{article.isVisable ? 'Yes' : 'No'}</td>
-        <td>{article.id}</td>
-        <td>{article.title}</td>
-        <td>{article.description}</td>
-        {
-          <td>
-            {article.tags.map((tag: string) => {
-              return (
-                <span key={tag}>
-                  <Badge bg='secondary'>{tag}</Badge>{' '}
-                </span>
-              );
-            })}
-          </td>
-        }
-        <td>{article.published}</td>
-        <td className='text-center'>
-          <FaPencilAlt className='me-2' onClick={() => editButtonClicked(article)} />{' '}
-          <FaEyeSlash
-            className='me-2'
-            onClick={async () => toggleHideArticle(article.id, article.isVisable)}
-          />{' '}
-          <FaTrashAlt onClick={async () => deleteArticle(article.id)} />
-        </td>
-      </tr>
-    );
+  const handleArticleUpdate = async (article: Article) => {
+    setLoading(true);
+    if (article.id) {
+      //Update article
+      try {
+        const { data, error } = await supabase
+          .from('articles')
+          .update({
+            title: article.title,
+            description: article.description,
+            published: article.published,
+            tags: { tags: article.tags },
+            isVisable: article.isVisable,
+          })
+          .eq('id', article.id);
+        if (error) throw error;
+
+        const updatedArticles = articles.map((a) => {
+          return a.id === article.id ? article : a;
+        });
+        setArticles(updatedArticles);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      //Make new Article
+      try {
+        const { data, error } = await supabase.from('articles').insert([
+          {
+            title: article.title,
+            description: article.description,
+            published: article.published,
+            tags: { tags: article.tags },
+            isVisable: article.isVisable,
+            user_id: session.user.id,
+          },
+        ]);
+        if (error) throw error;
+
+        data.forEach((article) => {
+          article.tags = article.tags.tags;
+        });
+
+        setArticles([data, ...articles]);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
+    }
   };
 
   return (
@@ -145,6 +159,7 @@ const ArticlesAdmin = ({ session }) => {
         show={showEditor}
         onHide={() => setShowEditor(false)}
         article={currentArticle}
+        handleArticleSubmit={handleArticleUpdate}
       />
       <header className='text-center'>
         <h1>Articles Admin</h1>
@@ -185,7 +200,15 @@ const ArticlesAdmin = ({ session }) => {
         </thead>
         <tbody>
           {articles.map((article) => {
-            return <TableRow key={article.id} article={article} />;
+            return (
+              <TableRow
+                key={article.id}
+                article={article}
+                editButtonClicked={editButtonClicked}
+                toggleHideArticle={toggleHideArticle}
+                deleteArticle={deleteArticle}
+              />
+            );
           })}
         </tbody>
       </Table>

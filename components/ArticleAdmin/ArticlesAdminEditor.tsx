@@ -1,13 +1,15 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import TagSelector from './TagSelector';
+import styles from '../../styles/ArticlesAdminEditor.module.css';
+import Article from '../../utils/types';
 
-const ArticlesAdminEditor = ({ show, onHide, article }) => {
+const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => {
   const { id, title, description, tags, published, isVisable } = article;
 
   const [titleInput, setTitleInput] = useState(title);
   const [descriptionInput, setDescriptionInput] = useState(description);
   const [tagsInput, setTagsInput] = useState(tags);
-  const [tag, setTag] = useState('');
   const [publishedInput, setPublishedInput] = useState(published);
   const [isVisableInput, setIsVisableInput] = useState(isVisable);
 
@@ -18,6 +20,37 @@ const ArticlesAdminEditor = ({ show, onHide, article }) => {
     setPublishedInput(published);
     setIsVisableInput(isVisable);
   }, [title, description, tags, published, isVisable]);
+
+  const deleteTag = (tag: string) => {
+    const remainingTags = tagsInput.filter((t: string) => {
+      return t !== tag;
+    });
+    setTagsInput(remainingTags);
+  };
+
+  const addTag = (tag: string) => {
+    if (tagsInput.length < 4 && !tagsInput.includes(tag)) {
+      setTagsInput([...tagsInput, tag]);
+    }
+  };
+
+  const handleSubmitButton = () => {
+    if (publishedInput) {
+      const formattedArticleData: Article = {
+        id: id,
+        title: titleInput,
+        description: descriptionInput,
+        tags: tagsInput,
+        published: publishedInput,
+        isVisable: isVisableInput,
+        isDeleted: false,
+      };
+      handleArticleSubmit(formattedArticleData);
+      onHide();
+    } else {
+      console.error('Set the Published date before submitting');
+    }
+  };
 
   return (
     <Modal
@@ -53,8 +86,20 @@ const ArticlesAdminEditor = ({ show, onHide, article }) => {
           </Form.Group>
           <Form.Group className='mb-3' controlId='formTags'>
             <Form.Label>Tags</Form.Label>
+            <div className='mb-2 mt-1'>
+              {tagsInput.map((tag: string) => {
+                return (
+                  <span
+                    className={`${styles.tag} border me-2 p-1 rounded`}
+                    key={tag}
+                    onClick={() => deleteTag(tag)}>
+                    {tag}
+                  </span>
+                );
+              })}
+            </div>
 
-            <Button>Add</Button>
+            <TagSelector tagSelected={addTag} />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formPublished'>
             <label className='me-2' htmlFor='pulished'>
@@ -76,13 +121,12 @@ const ArticlesAdminEditor = ({ show, onHide, article }) => {
               onChange={() => setIsVisableInput(!isVisableInput)}
             />
           </Form.Group>
-          <Button variant='primary' type='submit'>
-            Submit
-          </Button>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='primary'>Submit</Button>
+        <Button onClick={handleSubmitButton} variant='primary'>
+          Submit
+        </Button>
         <Button onClick={onHide} variant='secondary'>
           Close
         </Button>
