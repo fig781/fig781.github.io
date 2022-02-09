@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../utils/supabaseClient';
 import ArticlesAdminEditor from './ArticlesAdminEditor';
 import TableRow from '../ArticleAdmin/TableRow';
-import Article from '../../utils/types';
+import { Article, FileData } from '../../utils/types';
 
 const ArticlesAdmin = ({ session }) => {
   const defaultArticle: Article = {
@@ -15,6 +15,7 @@ const ArticlesAdmin = ({ session }) => {
     tags: [],
     published: '',
     isDeleted: false,
+    articleFile: { fileId: null, fileName: null },
   };
 
   const [articles, setArticles] = useState([]);
@@ -25,28 +26,87 @@ const ArticlesAdmin = ({ session }) => {
   useEffect(() => {
     const getArticles = async () => {
       setLoading(true);
-      try {
-        let { data: articles, error } = await supabase
-          .from('articles')
-          .select('id,title,description,isVisable,tags,published,isDeleted')
-          .eq('isDeleted', 'false')
-          .order('created_at', { ascending: false });
 
-        articles.forEach((article) => {
-          article.tags = article.tags.tags;
-        });
-
-        setArticles(articles);
-        if (error) throw error;
-      } catch (e) {
-        console.log(e);
-      } finally {
+      const articles = await getAllArticles();
+      if (articles === null) {
         setLoading(false);
+        return;
       }
+
+      const fileData = await getArticleFiles();
+      if (fileData === null) {
+        setLoading(false);
+        return;
+      }
+
+      const combinedData = combineFilesWithArticles(articles, fileData);
+      setArticles(combinedData);
+      setLoading(false);
     };
 
     getArticles();
   }, []);
+
+  const combineFilesWithArticles = (articles: Article[], fileData: FileData[]) => {
+    const formattedData = articles.map((article: Article) => {
+      if (article.articleFile.fileId === null) return article;
+
+      fileData.forEach((entry: FileData) => {
+        if (article.articleFile.fileId === entry.id) {
+          article.articleFile.fileName = entry.name;
+        }
+      });
+
+      return article;
+    });
+
+    return formattedData;
+  };
+
+  const getAllArticles = async () => {
+    try {
+      let { data: articles, error } = await supabase
+        .from('articles')
+        .select(
+          'id,title,description,isVisable,tags,published,isDeleted,article_file_id'
+        )
+        .eq('isDeleted', 'false')
+        .order('created_at', { ascending: false });
+      if (error) throw error;
+
+      //format the article data to the Article Type
+      articles &&
+        articles.forEach((article) => {
+          article.tags = article.tags.tags;
+
+          article.article_file_id = {
+            fileId: article.article_file_id,
+            fileName: null,
+          };
+          article.articleFile = article.article_file_id;
+          delete article.article_file_id;
+        });
+
+      return articles;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getArticleFiles = async () => {
+    try {
+      const { data, error } = await supabase.storage
+        .from('articles')
+        .list('Articles', {
+          offset: 0,
+        });
+      if (error) throw error;
+
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const toggleHideArticle = async (id: number, isVisable: boolean) => {
     setLoading(true);
@@ -195,21 +255,23 @@ const ArticlesAdmin = ({ session }) => {
             <th>Description</th>
             <th>Tags</th>
             <th>Published</th>
+            <th>File</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {articles.map((article) => {
-            return (
-              <TableRow
-                key={article.id}
-                article={article}
-                editButtonClicked={editButtonClicked}
-                toggleHideArticle={toggleHideArticle}
-                deleteArticle={deleteArticle}
-              />
-            );
-          })}
+          {articles &&
+            articles.map((article) => {
+              return (
+                <TableRow
+                  key={article.id}
+                  article={article}
+                  editButtonClicked={editButtonClicked}
+                  toggleHideArticle={toggleHideArticle}
+                  deleteArticle={deleteArticle}
+                />
+              );
+            })}
         </tbody>
       </Table>
     </Container>

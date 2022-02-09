@@ -36,6 +36,7 @@ const TableRow = ({
         </td>
       }
       <td>{formattedPublished(article.published)}</td>
+      <td>{article.articleFile.fileName}</td>
       <td className='text-center'>
         <FaPencilAlt className='me-2' onClick={() => editButtonClicked(article)} />{' '}
         <FaEyeSlash
