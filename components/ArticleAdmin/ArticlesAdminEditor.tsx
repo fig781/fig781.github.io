@@ -61,16 +61,8 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
 
   const formattedFileName = (filePath: string) => {
     //from articles/Articles/README.md to README.md
-    let arr = filePath.split('');
-    const len = arr.length;
-    let x = len - 1;
-    for (x; x >= 0; x--) {
-      if (arr[x] === '/') {
-        break;
-      }
-    }
-
-    return arr.slice(x + 1, len).concat();
+    let arr = filePath.split('/');
+    return arr[arr.length - 1];
   };
 
   const handleFileChange = (e) => {
