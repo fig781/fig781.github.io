@@ -1,4 +1,4 @@
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, Spinner } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import TagSelector from './TagSelector';
 import styles from '../../styles/ArticlesAdminEditor.module.css';
@@ -16,6 +16,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
   const [isVisableInput, setIsVisableInput] = useState(isVisable);
   const [filePathInput, setFilePathInput] = useState(articleFilePath);
   const [rawFile, setRawFile] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setTitleInput(title);
@@ -88,6 +89,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
     const filePath = `Articles/${fileName}`;
 
     try {
+      setLoading(true);
       const { data, error } = await supabase.storage
         .from('articles')
         .upload(filePath, rawFile, {
@@ -96,7 +98,24 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
         });
       if (error) throw error;
 
+      //delete old file from storage
+      (await filePathInput) && deleteFile();
+
       setFilePathInput(data.Key);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const deleteFile = async () => {
+    try {
+      const { data, error } = await supabase.storage
+        .from('articles')
+        .remove([filePathInput]);
+
+      if (error) throw error;
     } catch (error) {
       console.log(error);
     }
@@ -176,9 +195,14 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
             <Form.Label>MD File</Form.Label>
             <p>Current File: {filePathInput && formattedFileName(filePathInput)}</p>
             <Form.Control type='file' accept='.md' onChange={handleFileChange} />
-            <Button className='mt-2' onClick={handleFileUpload}>
-              Apply File
-            </Button>
+            <div className='d-flex align-items-center mt-2'>
+              <Button className='' onClick={handleFileUpload}>
+                Apply File
+              </Button>
+              {loading && (
+                <Spinner animation='border' variant='primary' className='ms-2' />
+              )}
+            </div>
           </Form.Group>
         </Form>
       </Modal.Body>
