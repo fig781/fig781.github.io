@@ -6,12 +6,7 @@ export interface Article {
   tags: string[];
   published: string;
   isDeleted: boolean;
-  articleFile: ArticleFile | null;
-}
-
-interface ArticleFile {
-  fileId: string;
-  fileName: string;
+  articleFilePath: string | null;
 }
 
 export interface FileData {

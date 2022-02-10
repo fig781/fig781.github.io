@@ -1,5 +1,6 @@
 import { Badge } from 'react-bootstrap';
 import { FaTrashAlt, FaPencilAlt, FaEyeSlash } from 'react-icons/fa';
+import styles from '../../styles/TableRow.module.css';
 
 const TableRow = ({
   article,
@@ -17,12 +18,27 @@ const TableRow = ({
 
     return arr;
   };
+
+  const formattedFileName = (filePath: string) => {
+    //from articles/Articles/README.md to README.md
+    let arr = filePath.split('');
+    const len = arr.length;
+    let x = len - 1;
+    for (x; x >= 0; x--) {
+      if (arr[x] === '/') {
+        break;
+      }
+    }
+
+    return arr.slice(x + 1, len).concat();
+  };
+
   return (
     <tr>
       <td>{article.isVisable ? 'Yes' : 'No'}</td>
       <td>{article.id}</td>
       <td>{article.title}</td>
-      <td>{article.description}</td>
+      <td className={styles.descriptionColumn}>{article.description}</td>
       {
         <td>
           {article.tags &&
@@ -35,8 +51,10 @@ const TableRow = ({
             })}
         </td>
       }
-      <td>{formattedPublished(article.published)}</td>
-      <td>{article.articleFile.fileName}</td>
+      <td>{article.published && formattedPublished(article.published)}</td>
+      <td>
+        {article.articleFilePath && formattedFileName(article.articleFilePath)}
+      </td>
       <td className='text-center'>
         <FaPencilAlt className='me-2' onClick={() => editButtonClicked(article)} />{' '}
         <FaEyeSlash
