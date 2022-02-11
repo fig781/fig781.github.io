@@ -27,11 +27,20 @@ const ArticlesAdmin = ({ session }) => {
     const getArticles = async () => {
       setLoading(true);
 
-      const articles = await getAllArticles();
+      let articles = await getAllArticles();
       if (articles === null) {
         setLoading(false);
         return;
       }
+
+      // const articleFileList = await getArticleFileList();
+      // if (
+      //   articleFileList !== null &&
+      //   articleFileList !== undefined &&
+      //   articles.length > 0
+      // ) {
+      //   articles = compareArticleFiles(articles, articleFileList);
+      // }
 
       setArticles(articles);
       setLoading(false);
@@ -56,6 +65,40 @@ const ArticlesAdmin = ({ session }) => {
       console.log(e);
     }
   };
+
+  // const compareArticleFiles = (articles, articleFileList) => {
+  //   let correctedArticles = [];
+
+  //   correctedArticles = articles.map((a) => {
+  //     if (a.articleFilePath === null) return;
+
+  //     let fileName = a.articleFilePath.split('/').pop();
+  //     let match = false;
+  //     articleFileList.forEach((file) => {
+  //       if (file.name === fileName) {
+  //         match = true;
+  //         return;
+  //       }
+  //     });
+  //     if (!match) {
+  //       a.articleFilePath = null;
+  //     }
+  //   });
+  //   return correctedArticles;
+  // };
+
+  // const getArticleFileList = async () => {
+  //   try {
+  //     const { data, error } = await supabase.storage
+  //       .from('articles')
+  //       .list('Articles', {
+  //         offset: 0,
+  //       });
+  //     if (error) throw error;
+
+  //     console.log(data);
+  //   } catch (error) {}
+  // };
 
   const toggleHideArticle = async (id: number, isVisable: boolean) => {
     setLoading(true);

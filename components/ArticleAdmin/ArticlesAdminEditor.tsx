@@ -14,17 +14,18 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
   const [tagsInput, setTagsInput] = useState(tags);
   const [publishedInput, setPublishedInput] = useState(published);
   const [isVisableInput, setIsVisableInput] = useState(isVisable);
-  const [filePathInput, setFilePathInput] = useState(articleFilePath);
-  const [rawFile, setRawFile] = useState(null);
+  const [articleFilePathInput, setArticleFilePathInput] = useState(articleFilePath);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setTitleInput(title);
     setDescriptionInput(description);
     setTagsInput(tags ? tags : []);
-    setPublishedInput(published);
+    setPublishedInput(
+      published ? published : new Date().toLocaleDateString('en-CA')
+    );
     setIsVisableInput(isVisable);
-    setFilePathInput(articleFilePath);
+    setArticleFilePathInput(articleFilePath);
   }, [title, description, tags, published, isVisable, articleFilePath]);
 
   const deleteTag = (tag: string) => {
@@ -50,8 +51,9 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
         published: publishedInput,
         isVisable: isVisableInput,
         isDeleted: false,
-        articleFilePath: filePathInput,
+        articleFilePath: articleFilePathInput,
       };
+
       handleArticleSubmit(formattedArticleData);
       onHide();
     } else {
@@ -59,18 +61,21 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
     }
   };
 
-  const formattedFileName = (filePath: string) => {
+  const formatFileName = (filePath: string) => {
     //from articles/Articles/README.md to README.md
     let arr = filePath.split('/');
     return arr[arr.length - 1];
   };
 
-  const handleFileChange = (e) => {
-    const file = (e.target as HTMLInputElement).files[0];
-    setRawFile(file);
+  const formatFilePath = (filePath: string) => {
+    //from articles/Articles/README.md to Articles/README.md
+    let arr = filePath.split('/');
+    arr.shift();
+    return arr.join('/');
   };
 
-  const handleFileUpload = async () => {
+  const handleFileUpload = async (e) => {
+    const rawFile = (e.target as HTMLInputElement).files[0];
     if (rawFile === null) return;
 
     const fileExt = rawFile.name.split('.').pop();
@@ -91,9 +96,9 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
       if (error) throw error;
 
       //delete old file from storage
-      (await filePathInput) && deleteFile();
+      articleFilePathInput && (await deleteFile());
 
-      setFilePathInput(data.Key);
+      setArticleFilePathInput(formatFilePath(data.Key));
     } catch (error) {
       console.log(error);
     } finally {
@@ -102,12 +107,15 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
   };
 
   const deleteFile = async () => {
+    console.log(articleFilePathInput);
     try {
       const { data, error } = await supabase.storage
         .from('articles')
-        .remove([filePathInput]);
+        .remove([articleFilePathInput]);
 
       if (error) throw error;
+
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -184,22 +192,20 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='formFile'>
-            <Form.Label>MD File</Form.Label>
-            <p>Current File: {filePathInput && formattedFileName(filePathInput)}</p>
-            <Form.Control type='file' accept='.md' onChange={handleFileChange} />
-            <div className='d-flex align-items-center mt-2'>
-              <Button className='' onClick={handleFileUpload}>
-                Apply File
-              </Button>
-              {loading && (
-                <Spinner animation='border' variant='primary' className='ms-2' />
-              )}
-            </div>
+            <Form.Label>
+              MD File - make sure the submit after adding a file
+            </Form.Label>
+            <p>
+              Current File:{' '}
+              {articleFilePathInput && formatFileName(articleFilePathInput)}
+            </p>
+            <Form.Control type='file' accept='.md' onInput={handleFileUpload} />
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleSubmitButton} variant='primary'>
+        {loading && <Spinner animation='border' variant='primary' />}
+        <Button onClick={handleSubmitButton} variant='primary' disabled={loading}>
           Submit
         </Button>
         <Button onClick={onHide} variant='secondary'>
