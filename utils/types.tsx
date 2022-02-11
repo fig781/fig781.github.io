@@ -9,12 +9,4 @@ export interface Article {
   articleFilePath: string | null;
 }
 
-export interface FileData {
-  created_at: string;
-  id: string;
-  last_accessed_at: string;
-  metadata: object;
-  name: string;
-  updated_at: string;
-}
 //add other types  as needed
