@@ -64,7 +64,7 @@ const cardProps = {
     btn1: {
       display: true,
       text: 'View Live',
-      link: 'https://aden-eilers.com/sorting-algorithm-visualizer',
+      link: 'https://fig781.github.io/sorting-algorithm-visualizer',
     },
     btn2: {
       display: true,
@@ -83,7 +83,7 @@ const cardProps = {
     btn1: {
       display: true,
       text: 'View Live',
-      link: 'https://aden-eilers.com/vue-country-currency-information/',
+      link: 'https://fig781.github.io/vue-country-currency-information/',
     },
     btn2: {
       display: true,
@@ -182,6 +182,6 @@ const cardProps = {
       link: '',
     },
   },
-}
+};
 
-export default cardProps
+export default cardProps;
