@@ -7,14 +7,7 @@ import DisplayCard from '../components/DisplayCard';
 import ContactForm from '../components/ContactForm';
 import cardPropData from '../utils/cardProps';
 
-import {
-  Navbar,
-  Container,
-  Nav,
-  Button,
-  OverlayTrigger,
-  Tooltip,
-} from 'react-bootstrap';
+import { Navbar, Container, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 import agileIcon from '../public/Images/agileIcon.png';
 import bootstrapIcon from '../public/Images/bootstrap.png';
@@ -53,6 +46,11 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Aden Eilers</title>
+        <link rel='shortcut icon' type='image/jpg' href='./Images/html.png' />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
       {/*HERO IMAGE*/}
       <section className={styles.hero}>
         <Navbar collapseOnSelect expand='sm' variant='dark'>
