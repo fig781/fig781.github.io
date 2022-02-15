@@ -1,5 +1,7 @@
-const Articles = () => {
-  return <div>test</div>
-}
+import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 
-export default Articles
+const Articles = () => {
+  return <div>Coming soon...</div>;
+};
+
+export default Articles;

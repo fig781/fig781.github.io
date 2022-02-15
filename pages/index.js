@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import styles from '../styles/Home.module.css'
-import DisplayCard from '../components/DisplayCard'
-import ContactForm from '../components/ContactForm'
-import cardPropData from '../utils/cardProps'
+import styles from '../styles/Home.module.css';
+import DisplayCard from '../components/DisplayCard';
+import ContactForm from '../components/ContactForm';
+import cardPropData from '../utils/cardProps';
 
 import {
   Navbar,
@@ -14,41 +14,42 @@ import {
   Button,
   OverlayTrigger,
   Tooltip,
-} from 'react-bootstrap'
+} from 'react-bootstrap';
 
-import agileIcon from '../public/Images/agileIcon.png'
-import bootstrapIcon from '../public/Images/bootstrap.png'
-import cssIcon from '../public/Images/cssIcon2.webp'
-import gitIcon from '../public/Images/gitIcon.png'
-import htmlIcon from '../public/Images/html5Icon.png'
-import javascriptIcon from '../public/Images/javascriptIcon.svg'
-import azureSql from '../public/Images/logoAzureSql.png'
-import nodeIcon from '../public/Images/nodeIcon.png'
-import postgresSqlIcon from '../public/Images/postgresSqlIcon.png'
-import reactIcon from '../public/Images/reactIcon.png'
-import tailwindIcon from '../public/Images/tailwindIcon.png'
-import typescriptIcon from '../public/Images/typescript.jpeg'
-import vueIcon from '../public/Images/vueIcon.png'
+import agileIcon from '../public/Images/agileIcon.png';
+import bootstrapIcon from '../public/Images/bootstrap.png';
+import cssIcon from '../public/Images/cssIcon2.webp';
+import gitIcon from '../public/Images/gitIcon.png';
+import htmlIcon from '../public/Images/html5Icon.png';
+import javascriptIcon from '../public/Images/javascriptIcon.svg';
+import azureSql from '../public/Images/logoAzureSql.png';
+import nodeIcon from '../public/Images/nodeIcon.png';
+import postgresSqlIcon from '../public/Images/postgresSqlIcon.png';
+import reactIcon from '../public/Images/reactIcon.png';
+import tailwindIcon from '../public/Images/tailwindIcon.png';
+import typescriptIcon from '../public/Images/typescript.jpeg';
+import vueIcon from '../public/Images/vueIcon.png';
 
-import algoVisualizerImg from '../public/Images/algoVisualizer.png'
-import personalSiteImg from '../public/Images/personalSite.png'
-import codingStatsImg from '../public/Images/codingStats2.png'
-import countryCurrencyImg from '../public/Images/country-currency.png'
-import keyValueDbImg from '../public/Images/keyValueDb.png'
-import learnFluentImg from '../public/Images/learnfluent.png'
+import algoVisualizerImg from '../public/Images/algoVisualizer.png';
+import personalSiteImg from '../public/Images/personalSite.png';
+import codingStatsImg from '../public/Images/codingStats2.png';
+import countryCurrencyImg from '../public/Images/country-currency.png';
+import keyValueDbImg from '../public/Images/keyValueDb.png';
+import learnFluentImg from '../public/Images/learnfluent.png';
 
-import { IconContext } from 'react-icons'
-import { FaGithub, FaLinkedin, FaDev } from 'react-icons/fa'
+import { IconContext } from 'react-icons';
+import { FaGithub, FaLinkedin, FaDev } from 'react-icons/fa';
 
 export default function Home() {
-  cardPropData.codingStatsProps.img = codingStatsImg
-  cardPropData.personalSiteProps.img = personalSiteImg
-  cardPropData.sortingAlgoProps.img = algoVisualizerImg
-  cardPropData.keyValueProps.img = keyValueDbImg
-  cardPropData.currencyInfoProps.img = countryCurrencyImg
-  cardPropData.learnfluentProps.img = learnFluentImg
+  cardPropData.codingStatsProps.img = codingStatsImg;
+  cardPropData.personalSiteProps.img = personalSiteImg;
+  cardPropData.sortingAlgoProps.img = algoVisualizerImg;
+  cardPropData.keyValueProps.img = keyValueDbImg;
+  cardPropData.currencyInfoProps.img = countryCurrencyImg;
+  cardPropData.learnfluentProps.img = learnFluentImg;
 
-  const copyToClipboard = () => navigator.clipboard.writeText('adeneilers@gmail.com')
+  const copyToClipboard = () =>
+    navigator.clipboard.writeText('adeneilers@gmail.com');
 
   return (
     <>
@@ -73,13 +74,13 @@ export default function Home() {
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
-            <Nav className={styles.articleButtonNav}>
+            {/* <Nav className={styles.articleButtonNav}>
               <Button className={`btn ${styles.btnWhite}`}>
                 <Link href='/articles'>
                   <a>Articles</a>
                 </Link>
               </Button>
-            </Nav>
+            </Nav> */}
           </Container>
         </Navbar>
 
@@ -97,8 +98,7 @@ export default function Home() {
                 <OverlayTrigger
                   placement='right'
                   delay={{ show: 250, hide: 400 }}
-                  overlay={<Tooltip id='email-tooltip'>Copy to clipboard</Tooltip>}
-                >
+                  overlay={<Tooltip id='email-tooltip'>Copy to clipboard</Tooltip>}>
                   <h4 className={styles.email} onClick={copyToClipboard}>
                     adeneilers@gmail.com
                   </h4>
@@ -108,13 +108,11 @@ export default function Home() {
                   className={styles.linkIcons}
                   href='https://github.com/fig781'
                   target='_blank'
-                  rel='noreferrer'
-                >
+                  rel='noreferrer'>
                   <IconContext.Provider
                     value={{
                       className: styles.customMarginRight,
-                    }}
-                  >
+                    }}>
                     <FaGithub />
                   </IconContext.Provider>
                 </a>
@@ -122,13 +120,11 @@ export default function Home() {
                   className={styles.linkIcons}
                   href='https://www.linkedin.com/in/aden-eilers/'
                   target='_blank'
-                  rel='noreferrer'
-                >
+                  rel='noreferrer'>
                   <IconContext.Provider
                     value={{
                       className: styles.customMarginRight,
-                    }}
-                  >
+                    }}>
                     <FaLinkedin />
                   </IconContext.Provider>
                 </a>
@@ -136,8 +132,7 @@ export default function Home() {
                   className={styles.linkIcons}
                   href='https://dev.to/fig781'
                   target='_blank'
-                  rel='noreferrer'
-                >
+                  rel='noreferrer'>
                   <FaDev />
                 </a>
               </div>
@@ -375,13 +370,11 @@ export default function Home() {
               className={styles.linkIcons}
               href='https://github.com/fig781'
               target='_blank'
-              rel='noreferrer'
-            >
+              rel='noreferrer'>
               <IconContext.Provider
                 value={{
                   className: styles.customMarginRight,
-                }}
-              >
+                }}>
                 <FaGithub />
               </IconContext.Provider>
             </a>
@@ -389,13 +382,11 @@ export default function Home() {
               className={styles.linkIcons}
               href='https://www.linkedin.com/in/aden-eilers/'
               target='_blank'
-              rel='noreferrer'
-            >
+              rel='noreferrer'>
               <IconContext.Provider
                 value={{
                   className: styles.customMarginRight,
-                }}
-              >
+                }}>
                 <FaLinkedin />
               </IconContext.Provider>
             </a>
@@ -403,13 +394,12 @@ export default function Home() {
               className={styles.linkIcons}
               href='https://dev.to/fig781'
               target='_blank'
-              rel='noreferrer'
-            >
+              rel='noreferrer'>
               <FaDev />
             </a>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
