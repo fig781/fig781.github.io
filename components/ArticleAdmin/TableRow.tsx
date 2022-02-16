@@ -29,6 +29,7 @@ const TableRow = ({
     <tr>
       <td>{article.isVisable ? 'Yes' : 'No'}</td>
       <td>{article.id}</td>
+      <td>{article.devId}</td>
       <td>{article.title}</td>
       <td className={styles.descriptionColumn}>{article.description}</td>
       {

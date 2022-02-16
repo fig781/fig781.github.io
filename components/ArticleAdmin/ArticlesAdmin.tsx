@@ -9,6 +9,7 @@ import { Article } from '../../utils/types';
 const ArticlesAdmin = ({ session }) => {
   const defaultArticle: Article = {
     id: null,
+    devId: null,
     isVisable: true,
     title: '',
     description: '',
@@ -45,7 +46,7 @@ const ArticlesAdmin = ({ session }) => {
       let { data: articles, error } = await supabase
         .from('articles')
         .select(
-          'id,title,description,isVisable,tags,published,isDeleted,articleFilePath'
+          'id,title,description,isVisable,tags,published,isDeleted,articleFilePath,devId'
         )
         .eq('isDeleted', 'false')
         .order('created_at', { ascending: false });
@@ -122,6 +123,7 @@ const ArticlesAdmin = ({ session }) => {
             tags: article.tags,
             isVisable: article.isVisable,
             articleFilePath: article.articleFilePath,
+            devId: article.devId,
           })
           .eq('id', article.id);
         if (error) throw error;
@@ -148,6 +150,7 @@ const ArticlesAdmin = ({ session }) => {
             isVisable: article.isVisable,
             user_id: session.user.id,
             articleFilePath: article.articleFilePath,
+            devId: article.devId,
           },
         ]);
         if (error) throw error;
@@ -190,15 +193,20 @@ const ArticlesAdmin = ({ session }) => {
             )}
           </div>
         </div>
-        <Button variant='primary' onClick={() => editButtonClicked(defaultArticle)}>
-          New Article
-        </Button>
+        <div>
+          <Button
+            variant='primary'
+            onClick={() => editButtonClicked(defaultArticle)}>
+            New Article
+          </Button>
+        </div>
       </section>
       <Table striped bordered hover>
         <thead>
           <tr>
             <th>Visable</th>
             <th>id</th>
+            <th>devID</th>
             <th>Title</th>
             <th>Description</th>
             <th>Tags</th>

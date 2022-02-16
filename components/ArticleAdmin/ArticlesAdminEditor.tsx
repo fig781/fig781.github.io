@@ -6,8 +6,16 @@ import { Article } from '../../utils/types';
 import { supabase } from '../../utils/supabaseClient';
 
 const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => {
-  const { id, title, description, tags, published, isVisable, articleFilePath } =
-    article;
+  const {
+    id,
+    title,
+    description,
+    tags,
+    published,
+    isVisable,
+    articleFilePath,
+    devId,
+  } = article;
 
   const [titleInput, setTitleInput] = useState(title);
   const [descriptionInput, setDescriptionInput] = useState(description);
@@ -15,6 +23,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
   const [publishedInput, setPublishedInput] = useState(published);
   const [isVisableInput, setIsVisableInput] = useState(isVisable);
   const [articleFilePathInput, setArticleFilePathInput] = useState(articleFilePath);
+  const [devIdInput, setDevIdInput] = useState(devId);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -26,7 +35,8 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
     );
     setIsVisableInput(isVisable);
     setArticleFilePathInput(articleFilePath);
-  }, [title, description, tags, published, isVisable, articleFilePath]);
+    setDevIdInput(devId);
+  }, [title, description, tags, published, isVisable, articleFilePath, devId]);
 
   const deleteTag = (tag: string) => {
     const remainingTags = tagsInput.filter((t: string) => {
@@ -52,6 +62,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
         isVisable: isVisableInput,
         isDeleted: false,
         articleFilePath: articleFilePathInput,
+        devId: devIdInput,
       };
 
       handleArticleSubmit(formattedArticleData);
@@ -118,6 +129,32 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
       console.log(data);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const linkDevArticle = async () => {
+    //takes the title of my article and checks if there is an article on dev.to
+    //that I have published with the same title. If there is one, return the article ID
+    setLoading(true);
+    try {
+      const res = await fetch(
+        'https://dev.to/api/articles?username=fig781&per_page=10'
+      );
+      if (!res.ok) throw new Error('Request Failed');
+
+      const data = await res.json();
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].title === titleInput) {
+          setDevIdInput(data[i].id);
+          return;
+        }
+      }
+      //if no articles match
+      setDevIdInput(null);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -200,6 +237,11 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
               {articleFilePathInput && formatFileName(articleFilePathInput)}
             </p>
             <Form.Control type='file' accept='.md' onInput={handleFileUpload} />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formDevId'>
+            <Form.Label>Link Dev Article</Form.Label>
+            <p>Linked article ID: {devIdInput}</p>
+            <Button onClick={linkDevArticle}>Link Article</Button>
           </Form.Group>
         </Form>
       </Modal.Body>

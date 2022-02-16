@@ -1,5 +1,6 @@
 export interface Article {
   id: number | null;
+  devId: number | null;
   isVisable: boolean;
   title: string;
   description: string;
