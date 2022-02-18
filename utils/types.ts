@@ -8,6 +8,7 @@ export interface Article {
   published: string;
   isDeleted: boolean;
   articleFilePath: string | null;
+  devUrl: string | null;
 }
 
 //add other types  as needed

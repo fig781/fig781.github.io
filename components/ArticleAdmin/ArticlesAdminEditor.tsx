@@ -15,6 +15,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
     isVisable,
     articleFilePath,
     devId,
+    devUrl,
   } = article;
 
   const [titleInput, setTitleInput] = useState(title);
@@ -24,6 +25,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
   const [isVisableInput, setIsVisableInput] = useState(isVisable);
   const [articleFilePathInput, setArticleFilePathInput] = useState(articleFilePath);
   const [devIdInput, setDevIdInput] = useState(devId);
+  const [devUrlInput, setDevUrlInput] = useState(devUrl);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -36,7 +38,17 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
     setIsVisableInput(isVisable);
     setArticleFilePathInput(articleFilePath);
     setDevIdInput(devId);
-  }, [title, description, tags, published, isVisable, articleFilePath, devId]);
+    setDevUrlInput(devUrl);
+  }, [
+    title,
+    description,
+    tags,
+    published,
+    isVisable,
+    articleFilePath,
+    devId,
+    devUrl,
+  ]);
 
   const deleteTag = (tag: string) => {
     const remainingTags = tagsInput.filter((t: string) => {
@@ -63,6 +75,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
         isDeleted: false,
         articleFilePath: articleFilePathInput,
         devId: devIdInput,
+        devUrl: devUrlInput,
       };
 
       handleArticleSubmit(formattedArticleData);
@@ -146,6 +159,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
       for (let i = 0; i < data.length; i++) {
         if (data[i].title === titleInput) {
           setDevIdInput(data[i].id);
+          setDevUrlInput(data[i].url);
           return;
         }
       }
@@ -241,6 +255,7 @@ const ArticlesAdminEditor = ({ show, onHide, article, handleArticleSubmit }) => 
           <Form.Group className='mb-3' controlId='formDevId'>
             <Form.Label>Link Dev Article</Form.Label>
             <p>Linked article ID: {devIdInput}</p>
+            <p>Linked article URL: {devUrlInput}</p>
             <Button onClick={linkDevArticle}>Link Article</Button>
           </Form.Group>
         </Form>

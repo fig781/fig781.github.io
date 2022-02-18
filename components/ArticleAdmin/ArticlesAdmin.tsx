@@ -17,6 +17,7 @@ const ArticlesAdmin = ({ session }) => {
     published: '',
     isDeleted: false,
     articleFilePath: null,
+    devUrl: null,
   };
 
   const [articles, setArticles] = useState([]);
@@ -46,7 +47,7 @@ const ArticlesAdmin = ({ session }) => {
       let { data: articles, error } = await supabase
         .from('articles')
         .select(
-          'id,title,description,isVisable,tags,published,isDeleted,articleFilePath,devId'
+          'id,title,description,isVisable,tags,published,isDeleted,articleFilePath,devId,devURL'
         )
         .eq('isDeleted', 'false')
         .order('created_at', { ascending: false });
@@ -124,6 +125,7 @@ const ArticlesAdmin = ({ session }) => {
             isVisable: article.isVisable,
             articleFilePath: article.articleFilePath,
             devId: article.devId,
+            devURL: article.devUrl,
           })
           .eq('id', article.id);
         if (error) throw error;
@@ -151,6 +153,7 @@ const ArticlesAdmin = ({ session }) => {
             user_id: session.user.id,
             articleFilePath: article.articleFilePath,
             devId: article.devId,
+            devURL: article.devUrl,
           },
         ]);
         if (error) throw error;
