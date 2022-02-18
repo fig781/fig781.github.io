@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '../../utils/supabaseClient';
+import { supabase } from '../../../utils/supabaseClient';
 
 interface DevArticle {
   id: number;
-  url: string;
   public_reactions_count: number;
 }
 
@@ -40,7 +39,6 @@ const getAllDevArticles = async () => {
     const formattedData = data.map((article) => {
       return {
         id: article.id,
-        url: article.url,
         public_reactions_count: article.public_reactions_count,
       };
     });
@@ -97,8 +95,6 @@ const updateMyArticleWithDevInfo = async (
     const { data, error } = await supabase
       .from('articles')
       .update({
-        devId: devArticle.id,
-        devURL: devArticle.url,
         devPublicReactionsCount: devArticle.public_reactions_count,
       })
       .match({ id: myArticle.id });
