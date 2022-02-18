@@ -1,0 +1,16 @@
+# runs a serverless function, syncDevArticles on vercel at 12am PST every sunday. This serverless function will update the likes on the linked articles
+
+name: 15-minute-cron
+on:
+  schedule:
+    - cron: '0 8 * * 0'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call api route syncDevArticles
+        run: |
+          curl --request GET \
+          --url 'https://aden-eilers.com/api/cron/syncDevArticles' \
+          --header 'username: ${{ secrets.DEV_ACCOUNT_USERNAME }}' \
+          --header 'password: ${{ secrets.DEV_ACCOUNT_PASSWORD }}'
