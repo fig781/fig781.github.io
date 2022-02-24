@@ -1,20 +1,10 @@
 import styles from '../../styles/ArticleListItem.module.css';
+import formatDisplayPublishedDate from '../../utils/formatDisplayPublishedDate';
 
 import { Badge } from 'react-bootstrap';
 import Link from 'next/link';
 
 const ArticleListItem = ({ article }) => {
-  const formattedPublished = (published: string) => {
-    //from 2022-01-31 to 01-31-2022
-    let arr: string[] = published.split('');
-    arr.push('-');
-    let year = arr.splice(0, 4);
-    arr = arr.concat(year);
-    arr.shift();
-
-    return arr;
-  };
-
   return (
     <Link href={`/articles/${article.id}`}>
       <a
@@ -36,7 +26,7 @@ const ArticleListItem = ({ article }) => {
         </div>
         <div>
           <span className='fw-light'>
-            {article.published && formattedPublished(article.published)}
+            {article.published && formatDisplayPublishedDate(article.published)}
           </span>
         </div>
       </a>

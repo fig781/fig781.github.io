@@ -17,14 +17,16 @@ body {
   border: none;
 }
 
-a {
+.btn a {
   color: white;
+}
+
+a {
   outline: none;
   text-decoration: none;
 }
 
 a:hover {
-  color: white;
   text-decoration: none;
   outline: none;
 }

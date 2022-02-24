@@ -1,15 +1,22 @@
 /* HERO SECTION*/
 .hero {
   background-image: url('../public/Images/Bgs/heroBg3840.svg');
-  background-color: var(--bg-color);
+  background-color: white;
   height: 100vh;
   background-size: cover;
 }
 
+.navLinks a:hover {
+  color: rgb(212, 212, 212);
+}
+
 .btnWhite {
   background: transparent;
-  color: white;
   border: solid 1px white;
+}
+
+.btnWhite a {
+  color: white;
 }
 
 .btnWhite:hover {
@@ -53,6 +60,12 @@
 
 .linkIcons {
   font-size: 2.5rem;
+  color: white;
+}
+
+.linkIcons:hover {
+  font-size: 2.5rem;
+  color: rgb(212, 212, 212);
 }
 
 .customMarginRight {

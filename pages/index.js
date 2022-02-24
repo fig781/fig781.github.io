@@ -65,16 +65,24 @@ export default function Home() {
             <Navbar.Toggle aria-controls='responsive-navbar-nav' />
             <Navbar.Collapse className={styles.navbar1} id='responsive-navbar-nav'>
               <Nav className='me-auto'>
-                <Nav.Link className='text-white' href='#development'>
+                <Nav.Link
+                  className={`${styles.navLinks} text-white`}
+                  href='#development'>
                   Development
                 </Nav.Link>
-                <Nav.Link className='text-white' href='#projectsSection'>
+                <Nav.Link
+                  className={`${styles.navLinks} text-white`}
+                  href='#projectsSection'>
                   Projects
                 </Nav.Link>
-                <Nav.Link className='text-white' href='#resumeSection'>
+                <Nav.Link
+                  className={`${styles.navLinks} text-white`}
+                  href='#resumeSection'>
                   Resume
                 </Nav.Link>
-                <Nav.Link className='text-white' href='#contactSection'>
+                <Nav.Link
+                  className={`${styles.navLinks} text-white`}
+                  href='#contactSection'>
                   Contact
                 </Nav.Link>
               </Nav>
