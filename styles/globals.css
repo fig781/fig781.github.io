@@ -23,12 +23,6 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: white;
-  text-decoration: none;
-  outline: none;
-}
-
 a:hover {
   color: white;
   text-decoration: none;

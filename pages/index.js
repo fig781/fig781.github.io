@@ -7,7 +7,14 @@ import DisplayCard from '../components/DisplayCard';
 import ContactForm from '../components/ContactForm';
 import cardPropData from '../utils/cardProps';
 
-import { Navbar, Container, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {
+  Navbar,
+  Container,
+  Nav,
+  OverlayTrigger,
+  Tooltip,
+  Button,
+} from 'react-bootstrap';
 
 import agileIcon from '../public/Images/agileIcon.png';
 import bootstrapIcon from '../public/Images/bootstrap.png';
@@ -72,13 +79,13 @@ export default function Home() {
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
-            {/* <Nav className={styles.articleButtonNav}>
+            <Nav className={styles.articleButtonNav}>
               <Button className={`btn ${styles.btnWhite}`}>
                 <Link href='/articles'>
                   <a>Articles</a>
                 </Link>
               </Button>
-            </Nav> */}
+            </Nav>
           </Container>
         </Navbar>
 
