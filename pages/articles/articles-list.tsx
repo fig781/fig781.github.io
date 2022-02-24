@@ -20,7 +20,7 @@ const ArticlesList = ({ articles }) => {
       <NavBar />
       <section className={styles.listContainer}>
         <h1 className='px-2 my-2'>Articles</h1>
-        <div className={styles.articlesContainer}>
+        <div>
           {articlesList.map((article) => {
             return <ArticleListItem key={article.id} article={article} />;
           })}
