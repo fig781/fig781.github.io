@@ -3,4 +3,5 @@
   margin-right: auto;
   max-width: 850px;
   padding: 1rem;
+  min-height: calc(100vh - 157.59px);
 }

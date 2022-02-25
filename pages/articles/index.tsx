@@ -5,8 +5,8 @@ import NavBar from '../../components/Articles/NavBar';
 import { supabase } from '../../utils/supabaseClient';
 import styles from '../../styles/ArticlesList.module.css';
 import ArticleListItem from '../../components/Articles/ArticleListItem';
-
-import { Container } from 'react-bootstrap';
+import Footer from '../../components/Articles/Footer';
+import Head from 'next/head';
 
 const ArticlesList = ({ articles }) => {
   const [articlesList, setArticlesList] = useState(articles);
@@ -17,15 +17,22 @@ const ArticlesList = ({ articles }) => {
 
   return (
     <main>
-      <NavBar />
+      <Head>
+        <title>Articles | Aden Eilers</title>
+        <link rel='shortcut icon' type='image/jpg' href='./Images/html.png' />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+
+      <NavBar articleButton={false} />
       <section className={styles.listContainer}>
-        <h1 className='px-2 my-2'>Articles</h1>
+        <h1 className='px-2 mt-2 mb-4'>Articles</h1>
         <div>
           {articlesList.map((article) => {
             return <ArticleListItem key={article.id} article={article} />;
           })}
         </div>
       </section>
+      <Footer />
     </main>
   );
 };

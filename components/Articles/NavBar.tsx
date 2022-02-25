@@ -1,17 +1,25 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
+import styles from '../../styles/NavBar.module.css';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
-const NavBar = () => {
+const NavBar = ({ articleButton }) => {
   return (
-    <Navbar bg='light' expand='lg'>
+    <Navbar className={styles.navBar} expand='lg'>
       <Container>
-        <Navbar.Brand href='#home'>Aden Eilers</Navbar.Brand>
-
-        <Nav className='me-auto'>
-          <Nav.Link href='#home'>Home</Nav.Link>
-        </Nav>
+        <Link href='/'>
+          <a className={styles.logo}>
+            <h3>Aden Eilers</h3>
+          </a>
+        </Link>
+        {articleButton && (
+          <Link href='/articles'>
+            <a>
+              <Button className={styles.btn}>Articles</Button>
+            </a>
+          </Link>
+        )}
       </Container>
     </Navbar>
   );
