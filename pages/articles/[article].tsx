@@ -1,5 +1,5 @@
 import { supabase } from '../../utils/supabaseClient';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import parseMarkdown from '../../utils/parseMarkdown';
 import NavBar from '../../components/Articles/NavBar';
@@ -29,15 +29,16 @@ const Article = ({ article, parsedMarkdown }) => {
             {formattedDisplayPublishedDate(article.published)}
           </p>
           <div className='mb-5'>
-            {article.tags.map((tag: string) => {
-              return (
-                <span key={`${article.id}${tag}`}>
-                  <Badge className={styles.badge} pill text='dark'>
-                    {tag}
-                  </Badge>{' '}
-                </span>
-              );
-            })}
+            {article.tags &&
+              article.tags.map((tag: string) => {
+                return (
+                  <span key={`${article.id}${tag}`}>
+                    <Badge className={styles.badge} pill text='dark'>
+                      {tag}
+                    </Badge>{' '}
+                  </span>
+                );
+              })}
           </div>
         </header>
         <div dangerouslySetInnerHTML={{ __html: parsedMarkdown }} />
@@ -47,9 +48,9 @@ const Article = ({ article, parsedMarkdown }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const articleId = context.query.article;
+    const articleId = params.article;
 
     let { data: article, error: articleError } = await supabase
       .from('articles')
@@ -84,6 +85,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         parsedMarkdown: '',
       },
     };
+  }
+};
+
+export const getStaticPaths = async () => {
+  try {
+    let { data, error } = await supabase
+      .from('articles')
+      .select('id')
+      .eq('isVisable', true)
+      .eq('isDeleted', false);
+
+    if (error) throw error;
+
+    console.log(data);
+    return {
+      paths: data.map((article) => {
+        return { params: { article: article.id.toString() } };
+      }),
+      fallback: false,
+    };
+  } catch (error) {
+    console.log(error);
   }
 };
 export default Article;

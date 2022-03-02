@@ -15,6 +15,7 @@ body {
   border-radius: 30px;
   padding: 0.375rem 0.75rem;
   border: none;
+  min-width: 77px;
 }
 
 .btn a {

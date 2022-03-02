@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import { useState, useEffect } from 'react';
 
 import NavBar from '../../components/Articles/NavBar';
@@ -37,7 +36,7 @@ const ArticlesList = ({ articles }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps = async ({ params }) => {
   try {
     let { data: articles, error } = await supabase
       .from('articles')
