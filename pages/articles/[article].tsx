@@ -1,6 +1,5 @@
 import { supabase } from '../../utils/supabaseClient';
 import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
 import parseMarkdown from '../../utils/parseMarkdown';
 import NavBar from '../../components/Articles/NavBar';
 import Footer from '../../components/Articles/Footer';
@@ -8,9 +7,10 @@ import styles from '../../styles/Article.module.css';
 import formattedDisplayPublishedDate from '../../utils/formatDisplayPublishedDate';
 import { Badge } from 'react-bootstrap';
 import Head from 'next/head';
+import MarkdownRenderer from '../../components/MarkdownDisplay/MarkdownRenderer';
 
 const Article = ({ article, parsedMarkdown }) => {
-  const router = useRouter();
+  console.log(parsedMarkdown);
 
   return (
     <main>
@@ -41,7 +41,9 @@ const Article = ({ article, parsedMarkdown }) => {
               })}
           </div>
         </header>
-        <div dangerouslySetInnerHTML={{ __html: parsedMarkdown }} />
+
+        {/*Proper markdown display component goes here */}
+        <MarkdownRenderer ast={parsedMarkdown} />
       </div>
       <Footer />
     </main>
@@ -98,7 +100,6 @@ export const getStaticPaths = async () => {
 
     if (error) throw error;
 
-    console.log(data);
     return {
       paths: data.map((article) => {
         return { params: { article: article.id.toString() } };
