@@ -31,6 +31,10 @@ const getComponent = (node) => {
     );
   };
 
+  const inlineCode = ({ children }) => {
+    return <span>{node.value}</span>;
+  };
+
   switch (node.type) {
     case 'root':
       const root = ({ children }) => <>{children}</>;
@@ -80,10 +84,6 @@ const p = ({ children }) => {
 
 const strong = ({ children }) => {
   return <strong>{children}</strong>;
-};
-
-const inlineCode = ({ children }) => {
-  return <span>{children}</span>;
 };
 
 const pre = ({ children }) => {

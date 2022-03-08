@@ -11,7 +11,6 @@ import MarkdownRenderer from '../../components/MarkdownDisplay/MarkdownRenderer'
 
 const Article = ({ article, parsedMarkdown }) => {
   console.log(parsedMarkdown);
-
   return (
     <main>
       <Head>
