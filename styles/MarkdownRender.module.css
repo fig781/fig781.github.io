@@ -1,0 +1,10 @@
+.imageContainer {
+  display: inline-block;
+  position: relative;
+}
+
+.inlineCode {
+  background-color: rgb(231, 231, 231);
+  padding: 0px 3px 3px 3px;
+  border-radius: 0.3em;
+}

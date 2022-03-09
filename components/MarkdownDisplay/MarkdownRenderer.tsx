@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Prism from 'prismjs';
+import styles from '../../styles/MarkdownRender.module.css';
 
 //import different prism languages I need
 require('prismjs/components/prism-javascript');
@@ -13,14 +14,21 @@ const getComponent = (node) => {
   //need to render in getComponent to access node
   const link = ({ children }) => {
     return (
-      <Link href={node?.url}>
-        <a>{children}</a>
-      </Link>
+      <a href={node?.url} target='_blank' rel='noreferrer'>
+        {children}
+      </a>
     );
   };
 
   const img = ({ children }) => {
-    return <Image src={node?.url} alt={node?.alt} layout='fill' />;
+    return (
+      <>
+        <span className={styles.imageContainer}>
+          <Image src={node?.url} alt={node?.alt} layout='fill' />
+        </span>
+        <br />
+      </>
+    );
   };
 
   const code = ({ children }) => {
@@ -32,7 +40,7 @@ const getComponent = (node) => {
   };
 
   const inlineCode = ({ children }) => {
-    return <span>{node.value}</span>;
+    return <span className={styles.inlineCode}>{node.value}</span>;
   };
 
   switch (node.type) {
@@ -83,7 +91,11 @@ const p = ({ children }) => {
 };
 
 const strong = ({ children }) => {
-  return <strong>{children}</strong>;
+  return (
+    <>
+      <strong>{children}</strong> <br />
+    </>
+  );
 };
 
 const pre = ({ children }) => {
