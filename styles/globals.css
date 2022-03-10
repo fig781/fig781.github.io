@@ -2,6 +2,10 @@
   --bg-color: #0066ff;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
@@ -17,9 +21,10 @@ body {
   border: none;
   min-width: 77px;
 }
-
-.btn a {
-  color: white;
+.btn:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
 }
 
 a {
@@ -30,10 +35,6 @@ a {
 a:hover {
   text-decoration: none;
   outline: none;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 textarea {

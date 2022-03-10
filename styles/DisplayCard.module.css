@@ -1,12 +1,14 @@
 .btnProjects {
   background-color: var(--bg-color);
+}
+
+.btnProjects a {
   color: white;
 }
 
 .btnProjects:hover {
   transform: scale(0.97, 0.97);
   background-color: var(--bg-color);
-  color: white;
 }
 
 .projectButtons {

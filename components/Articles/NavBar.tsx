@@ -14,10 +14,8 @@ const NavBar = ({ articleButton }) => {
           </a>
         </Link>
         {articleButton && (
-          <Link href='/articles'>
-            <a>
-              <Button className={styles.btn}>Articles</Button>
-            </a>
+          <Link href='/articles' passHref>
+            <Button className={styles.btn}>Articles</Button>
           </Link>
         )}
       </Container>

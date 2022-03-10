@@ -11,21 +11,26 @@
 }
 
 .btnWhite {
-  background: transparent;
-  border: solid 1px white;
+  background-color: white;
+  color: black;
 }
 
 .btnWhite a {
-  color: white;
+  color: black;
 }
 
 .btnWhite:hover {
   transform: scale(0.97, 0.97);
   background-color: white;
-  border: solid 1px white;
+  color: black;
 }
 
 .btnWhite:hover a {
+  color: black;
+}
+
+.btnWhite:focus {
+  background-color: white;
   color: black;
 }
 
