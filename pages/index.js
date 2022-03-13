@@ -274,10 +274,10 @@ export default function Home() {
           <div className='col-8'>
             <div className='media'>
               <div className='media-body'>
-                <p className='resume-school'>
+                <p className='mb-0'>
                   <b>Oregon State University:</b> Bachelor&apos;s of Science
                 </p>
-                <p>Business Information Systems</p>
+                <p>Information Systems</p>
               </div>
             </div>
           </div>
@@ -298,9 +298,12 @@ export default function Home() {
               <b>Application Support </b>Viewpoint Construction Software
             </p>
             <ul>
-              <li>Supporting the Viewpoint Team product</li>
-              <li>Troubleshooting customer support cases</li>
-              <li>Collaborating with development to fix product bugs</li>
+              <li>
+                Consistently close the most support cases each week while maintaining
+                positive customer feedback.
+              </li>
+              <li>Teach and mentor all new team members.</li>
+              <li>Collaborating with development to fix 100+ product bugs.</li>
             </ul>
           </div>
           <div className='col-4'>
@@ -318,7 +321,10 @@ export default function Home() {
               <b>Web Development Internship</b> NSI Engineering
             </p>
             <ul>
-              <li>Constructed the user interface using the React.js framework.</li>
+              <li>
+                Constructed the user interface for a complex SaaS app using the
+                React.js framework.
+              </li>
               <li>Collaborated with a team of 5 other developers.</li>
               <li>Used the agile development framework.</li>
             </ul>
