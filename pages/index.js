@@ -55,7 +55,6 @@ export default function Home() {
     <>
       <Head>
         <title>Aden Eilers</title>
-        <link rel='shortcut icon' type='image/jpg' href='./Images/html.png' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       {/*HERO IMAGE*/}

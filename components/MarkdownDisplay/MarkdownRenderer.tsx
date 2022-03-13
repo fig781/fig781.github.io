@@ -120,7 +120,6 @@ const Node = (node) => {
 const MarkdownRenderer = ({ ast }) => {
   useEffect(() => {
     Prism.highlightAll();
-    console.log('ran');
   }, []);
 
   return <Node {...ast} />;

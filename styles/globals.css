@@ -1,5 +1,9 @@
 :root {
+  /* Color */
   --bg-color: #0066ff;
+
+  /* Fonts */
+  --code-font: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
 }
 
 * {
