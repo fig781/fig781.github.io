@@ -30,10 +30,6 @@
   }
 }
 
-.badge {
-  background-color: rgb(209, 209, 209) !important;
-}
-
 .cardImage {
   max-height: 250px;
   border-top-left-radius: calc(0.25rem - 1px);

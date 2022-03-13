@@ -1,7 +1,7 @@
 import styles from '../../styles/ArticleListItem.module.css';
 import formatDisplayPublishedDate from '../../utils/formatDisplayPublishedDate';
 
-import { Badge } from 'react-bootstrap';
+import CBadge from '../CBadge';
 import Link from 'next/link';
 
 const ArticleListItem = ({ article }) => {
@@ -16,9 +16,7 @@ const ArticleListItem = ({ article }) => {
             {article.tags.map((tag: string) => {
               return (
                 <span key={`${article.id}${tag}`}>
-                  <Badge className={styles.badge} pill text='dark'>
-                    {tag}
-                  </Badge>{' '}
+                  <CBadge tag={tag} />
                 </span>
               );
             })}

@@ -1,6 +1,7 @@
 //import Image from 'next/image'
-import styles from '../styles/DisplayCard.module.css'
-import { Badge, Image } from 'react-bootstrap'
+import styles from '../styles/DisplayCard.module.css';
+import Image from 'react-bootstrap/Image';
+import CBadge from './CBadge';
 
 const DisplayCard = ({ cardInfo }) => {
   return (
@@ -10,8 +11,7 @@ const DisplayCard = ({ cardInfo }) => {
           <Image
             className={styles.cardImage}
             src={cardInfo.img.src}
-            alt='...'
-          ></Image>
+            alt='...'></Image>
         )}
 
         <div className='card-body'>
@@ -23,11 +23,9 @@ const DisplayCard = ({ cardInfo }) => {
             {cardInfo.tags.map((tag: string) => {
               return (
                 <span key={`${cardInfo.id}${tag}`}>
-                  <Badge className={styles.badge} pill text='dark'>
-                    {tag}
-                  </Badge>{' '}
+                  <CBadge tag={tag} />
                 </span>
-              )
+              );
             })}
           </div>
 
@@ -53,12 +51,12 @@ const DisplayCard = ({ cardInfo }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 DisplayCard.defaultProps = {
   includeTopImage: true,
   includeSubHeader: true,
-}
+};
 
-export default DisplayCard
+export default DisplayCard;

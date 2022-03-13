@@ -5,7 +5,7 @@ import NavBar from '../../components/Articles/NavBar';
 import Footer from '../../components/Articles/Footer';
 import styles from '../../styles/Article.module.css';
 import formattedDisplayPublishedDate from '../../utils/formatDisplayPublishedDate';
-import { Badge } from 'react-bootstrap';
+import CBadge from '../../components/CBadge';
 import Head from 'next/head';
 import MarkdownRenderer from '../../components/MarkdownDisplay/MarkdownRenderer';
 
@@ -31,9 +31,7 @@ const Article = ({ article, parsedMarkdown }) => {
               article.tags.map((tag: string) => {
                 return (
                   <span key={`${article.id}${tag}`}>
-                    <Badge className={styles.badge} pill text='dark'>
-                      {tag}
-                    </Badge>{' '}
+                    <CBadge tag={tag} />
                   </span>
                 );
               })}
