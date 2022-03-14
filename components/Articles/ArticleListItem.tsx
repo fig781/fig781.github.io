@@ -23,7 +23,7 @@ const ArticleListItem = ({ article }) => {
           </div>
         </div>
         <div>
-          <span className='fw-light'>
+          <span className={styles.date}>
             {article.published && formatDisplayPublishedDate(article.published)}
           </span>
         </div>

@@ -100,7 +100,9 @@ export default function Home() {
             <h1>ADEN EILERS</h1>
             <div className='row'>
               <div className='col-md-9'>
-                <h3>Software engineering through research and development.</h3>
+                <h3 className={styles.subHeader}>
+                  Software engineering through research and development.
+                </h3>
               </div>
             </div>
             <div className='row'>
@@ -109,7 +111,9 @@ export default function Home() {
                   placement='right'
                   delay={{ show: 250, hide: 400 }}
                   overlay={<Tooltip id='email-tooltip'>Copy to clipboard</Tooltip>}>
-                  <h4 className={styles.email} onClick={copyToClipboard}>
+                  <h4
+                    className={`${styles.email} ${styles.subHeader}`}
+                    onClick={copyToClipboard}>
                     adeneilers@gmail.com
                   </h4>
                 </OverlayTrigger>

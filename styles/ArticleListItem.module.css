@@ -8,3 +8,9 @@
   background-color: #cde1ff;
   color: black;
 }
+
+.date {
+  font-family: var(--code-font);
+  font-weight: 300;
+  color: var(--color-paragraph-secondary);
+}
