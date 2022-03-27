@@ -1,6 +1,6 @@
 # runs a serverless function, syncDevArticles on vercel at 12am PST every sunday. This serverless function will update the likes on the linked articles
 
-name: 15-minute-cron
+name: Sync dev article information
 on:
   schedule:
     - cron: '0 8 * * 0'
