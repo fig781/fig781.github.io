@@ -6,8 +6,8 @@ import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstr
 
 const NavBar = ({ articleButton }) => {
   return (
-    <Navbar className={styles.navBar} expand='lg'>
-      <Container>
+    <header className={styles.navBar}>
+      <div className={styles.innerContainer}>
         <Link href='/'>
           <a className={styles.logo}>
             <h3>Aden Eilers</h3>
@@ -18,8 +18,8 @@ const NavBar = ({ articleButton }) => {
             <Button className={styles.btn}>Articles</Button>
           </Link>
         )}
-      </Container>
-    </Navbar>
+      </div>
+    </header>
   );
 };
 

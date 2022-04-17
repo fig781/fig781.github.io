@@ -11,7 +11,7 @@ import MarkdownRenderer from '../../components/MarkdownDisplay/MarkdownRenderer'
 
 const Article = ({ article, parsedMarkdown }) => {
   return (
-    <main>
+    <main className={styles.main}>
       <Head>
         <title>{article.title} | Aden Eilers</title>
         <link rel='shortcut icon' type='image/jpg' href='./Images/html.png' />

@@ -1,5 +1,16 @@
 .navBar {
   background-color: #d1d1d1;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.innerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1320px;
+  width: 100%;
 }
 
 .btn:hover {
@@ -9,6 +20,10 @@
 
 .logo {
   color: black;
+}
+
+.logo h3 {
+  margin: 0;
 }
 
 .logo:hover {
