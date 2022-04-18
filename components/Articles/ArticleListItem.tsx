@@ -9,7 +9,7 @@ const ArticleListItem = ({ article }) => {
     <Link href={`/articles/${article.id}`}>
       <a
         className={` ${styles.container} d-flex justify-content-between align-items-center p-2`}>
-        <div className=''>
+        <div>
           <span className='fs-5'>{article.title}</span>
 
           <div>
@@ -22,7 +22,7 @@ const ArticleListItem = ({ article }) => {
             })}
           </div>
         </div>
-        <div>
+        <div className={styles.dateContainer}>
           <span className={styles.date}>
             {article.published && formatDisplayPublishedDate(article.published)}
           </span>

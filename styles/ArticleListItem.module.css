@@ -1,5 +1,5 @@
 .container {
-  border-radius: 15px;
+  border-radius: 10px;
   cursor: pointer;
   color: black;
 }
@@ -7,6 +7,11 @@
 .container:hover {
   background-color: #cde1ff;
   color: black;
+}
+
+.dateContainer {
+  min-width: fit-content;
+  height: 100%;
 }
 
 .date {
