@@ -5,6 +5,7 @@ import { supabase } from '../../utils/supabaseClient';
 import styles from '../../styles/ArticlesList.module.css';
 import ArticleListItem from '../../components/Articles/ArticleListItem';
 import Footer from '../../components/Articles/Footer';
+import ArticleSearch from '../../components/Articles/ArticleSearch';
 import Head from 'next/head';
 
 const ArticlesList = ({ articles }) => {
@@ -25,6 +26,7 @@ const ArticlesList = ({ articles }) => {
       <NavBar articleButton={false} />
       <section className={styles.listContainer}>
         <h1 className='px-2 mt-2 mb-4'>Articles</h1>
+        <ArticleSearch />
         <div>
           {articlesList.map((article) => {
             return <ArticleListItem key={article.id} article={article} />;
