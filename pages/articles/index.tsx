@@ -11,9 +11,23 @@ import Head from 'next/head';
 const ArticlesList = ({ articles }) => {
   const [articlesList, setArticlesList] = useState(articles);
 
-  useEffect(() => {
-    setArticlesList(articles);
-  }, [articles]);
+  const filter = (input: String, tag: String, sort: String) => {
+    //re-order and filter the list
+    //filter by title
+    const filteredArticles = filterByTitle(input, articlesList);
+    setArticlesList(filteredArticles);
+    console.log(input, tag, sort);
+  };
+
+  const filterByTitle = (filterText: String, articleList) => {
+    if (!filterText || !articleList) return articles;
+
+    return articles.filter((article) => {
+      if (article.title.toLowerCase().includes(filterText.toLowerCase())) {
+        return article;
+      }
+    });
+  };
 
   return (
     <main>
@@ -26,11 +40,12 @@ const ArticlesList = ({ articles }) => {
       <NavBar articleButton={false} />
       <section className={styles.listContainer}>
         <h1 className='px-2 mt-2 mb-4'>Articles</h1>
-        <ArticleSearch />
+        <ArticleSearch filter={filter} />
         <div>
-          {articlesList.map((article) => {
-            return <ArticleListItem key={article.id} article={article} />;
-          })}
+          {articlesList &&
+            articlesList.map((article) => {
+              return <ArticleListItem key={article.id} article={article} />;
+            })}
         </div>
       </section>
       <Footer />
