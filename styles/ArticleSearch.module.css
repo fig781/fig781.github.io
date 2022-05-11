@@ -8,10 +8,6 @@
   margin: 10px 0;
 }
 
-.dropdownContainer button:first-child {
-  margin-right: 10px;
-}
-
 .search {
   border: 1px solid black;
   border-radius: 10px;

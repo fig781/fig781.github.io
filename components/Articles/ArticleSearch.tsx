@@ -1,22 +1,38 @@
 import styles from '../../styles/ArticleSearch.module.css';
 import ArticleSearchDropdown from './ArticleSearchDropdown';
 
-import { useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
+import { useState } from 'react';
 
-const ArticleSearch = ({ filter }) => {
+const ArticleSearch = ({ filter, tagOptions, sortOptions }) => {
   const [input, setInput] = useState('');
   const [tag, setTag] = useState('');
   const [sort, setSort] = useState('');
-
-  //runs once on render, but it seems ok
-  // useEffect(() => {
-  //   filter(input, tag, sort);
-  // }, [filter, input, tag, sort]);
+  const [dropdownTagTitle, setDropdownTagTitle] = useState('Tag');
+  const [dropdownSortTitle, setDropdownSortTitle] = useState('Latest')
 
   const typeEvent = (typedInput) => {
     setInput(typedInput);
-    filter(typedInput, '', '');
+    filter(typedInput, tag, sort);
   };
+
+  const resetClicked = () => {
+    setTag('')
+    setSort('')
+    setDropdownTagTitle('Tag');
+    setDropdownSortTitle('Latest');
+    filter(input, '', '')
+  }
+
+  const filterSelected = (selection, dropdownTitle: String) => {
+    if (dropdownTitle === 'Tag') {
+      setTag(selection)
+      filter(input, selection, sort)
+    } else if (dropdownTitle === 'Sort') {
+      setSort(selection)
+      filter(input, tag, selection)
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -30,8 +46,15 @@ const ArticleSearch = ({ filter }) => {
         }}
       />
       {/* <div className={styles.dropdownContainer}>
-        <ArticleSearchDropdown title='Tags' />
-        <ArticleSearchDropdown title='Sort' />
+        <ArticleSearchDropdown title={dropdownTagTitle} options={tagOptions} filterSelected={filterSelected} />
+        <ArticleSearchDropdown title={dropdownSortTitle} options={sortOptions} filterSelected={filterSelected} />
+        {
+          tag || sort ?
+            <div className='ps-2 border-start'>
+              <Button onClick={() => resetClicked()}>Reset</Button>
+            </div> : null
+        }
+
       </div> */}
     </div>
   );

@@ -11,13 +11,61 @@ import Head from 'next/head';
 const ArticlesList = ({ articles }) => {
   const [articlesList, setArticlesList] = useState(articles);
 
+  const uniqueTags = (articles) => {
+    const tags = [];
+
+    articles.forEach(article => {
+      article.tags.forEach(tag => {
+        if (!tags.includes(tag)) {
+          tags.push(tag)
+        }
+      })
+    })
+
+    return tags;
+  }
+
+  const sortOptions = [
+    'Latest',
+    'Oldest'
+    //Most Popular
+    //Least Popular
+  ]
+
   const filter = (input: String, tag: String, sort: String) => {
-    //re-order and filter the list
-    //filter by title
-    const filteredArticles = filterByTitle(input, articlesList);
-    setArticlesList(filteredArticles);
+    let articlesList = articles
+
+    if (input) {
+      articlesList = filterByTitle(input, articlesList);
+      console.log(input, articlesList)
+    }
+
+    if (tag) {
+      articlesList = filterByTag(tag, articlesList);
+      console.log(tag, articlesList)
+    }
+
+    if (sort) {
+      articlesList = sortArticles(sort, articlesList)
+    }
+
+    setArticlesList(articlesList);
     console.log(input, tag, sort);
   };
+
+  const sortArticles = (sort, articlesList) => {
+    if (sort === 'Latest') {
+
+    }
+  }
+
+  const filterByTag = (tag: String, articleList) => {
+    return articleList.filter(article => {
+      if (article.tags.includes(tag)) {
+        return article
+      }
+    })
+  }
 
   const filterByTitle = (filterText: String, articleList) => {
     if (!filterText || !articleList) return articles;
@@ -40,7 +88,7 @@ const ArticlesList = ({ articles }) => {
       <NavBar articleButton={false} />
       <section className={styles.listContainer}>
         <h1 className='px-2 mt-2 mb-4'>Articles</h1>
-        <ArticleSearch filter={filter} />
+        <ArticleSearch filter={filter} tagOptions={uniqueTags(articles)} sortOptions={sortOptions} />
         <div>
           {articlesList &&
             articlesList.map((article) => {

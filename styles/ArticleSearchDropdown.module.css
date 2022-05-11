@@ -1,0 +1,5 @@
+.articleDropdown>button {
+  background-color: transparent;
+  color: black;
+  border: 1px solid var(--bg-color);
+}

@@ -1,14 +1,30 @@
 import styles from '../../styles/ArticleSearchDropdown.module.css';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useState } from 'react'
 
-const ArticleSearchDropdown = ({ title }) => {
+const ArticleSearchDropdown = ({ title, options, filterSelected }) => {
+  const [dropdownTitle, setDropdownTitle] = useState(title);
+
+  const dropdownClicked = (option) => {
+    setDropdownTitle(option)
+    filterSelected(option, title)
+  }
+
   return (
-    <DropdownButton id='dropdown-item-button' title={title}>
-      <Dropdown.Item as='button'>Action</Dropdown.Item>
-      <Dropdown.Item as='button'>Another action</Dropdown.Item>
-      <Dropdown.Item as='button'>Something else</Dropdown.Item>
-    </DropdownButton>
+    <Dropdown className={`me-2 ${dropdownTitle === title && styles.articleDropdown}`}>
+      <Dropdown.Toggle id={`dropdown-${title}`}>
+        {dropdownTitle}
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu>
+        {
+          options.map((option, index) => {
+            return <Dropdown.Item key={index} as='button' onClick={() => dropdownClicked(option)}>{option}</Dropdown.Item>
+          })
+        }
+      </Dropdown.Menu>
+    </Dropdown>
+
   );
 };
 
