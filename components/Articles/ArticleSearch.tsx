@@ -1,15 +1,12 @@
 import styles from '../../styles/ArticleSearch.module.css';
 import ArticleSearchDropdown from './ArticleSearchDropdown';
 
-import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
 const ArticleSearch = ({ filter, tagOptions, sortOptions }) => {
   const [input, setInput] = useState('');
-  const [tag, setTag] = useState('');
-  const [sort, setSort] = useState('');
-  const [dropdownTagTitle, setDropdownTagTitle] = useState('Tag');
-  const [dropdownSortTitle, setDropdownSortTitle] = useState('Latest')
+  const [tag, setTag] = useState('Tag');
+  const [sort, setSort] = useState('Sort');
 
   const typeEvent = (typedInput) => {
     setInput(typedInput);
@@ -17,22 +14,20 @@ const ArticleSearch = ({ filter, tagOptions, sortOptions }) => {
   };
 
   const resetClicked = () => {
-    setTag('')
-    setSort('')
-    setDropdownTagTitle('Tag');
-    setDropdownSortTitle('Latest');
-    filter(input, '', '')
-  }
+    setTag('Tag');
+    setSort('Sort');
+    filter(input, 'Tag', 'Latest');
+  };
 
-  const filterSelected = (selection, dropdownTitle: String) => {
+  const filterSelected = (selection, dropdownTitle) => {
     if (dropdownTitle === 'Tag') {
-      setTag(selection)
-      filter(input, selection, sort)
+      setTag(selection);
+      filter(input, selection, sort);
     } else if (dropdownTitle === 'Sort') {
-      setSort(selection)
-      filter(input, tag, selection)
+      setSort(selection);
+      filter(input, tag, selection);
     }
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -45,17 +40,29 @@ const ArticleSearch = ({ filter, tagOptions, sortOptions }) => {
           typeEvent(e.target.value);
         }}
       />
-      {/* <div className={styles.dropdownContainer}>
-        <ArticleSearchDropdown title={dropdownTagTitle} options={tagOptions} filterSelected={filterSelected} />
-        <ArticleSearchDropdown title={dropdownSortTitle} options={sortOptions} filterSelected={filterSelected} />
-        {
-          tag || sort ?
-            <div className='ps-2 border-start'>
-              <Button onClick={() => resetClicked()}>Reset</Button>
-            </div> : null
-        }
-
-      </div> */}
+      <div className={styles.dropdownContainer}>
+        <ArticleSearchDropdown
+          key={tag}
+          defaultTitle='Tag'
+          title={tag}
+          options={tagOptions}
+          filterSelected={filterSelected}
+        />
+        <ArticleSearchDropdown
+          key={sort}
+          defaultTitle='Sort'
+          title={sort}
+          options={sortOptions}
+          filterSelected={filterSelected}
+        />
+        {tag !== 'Tag' || sort !== 'Sort' ? (
+          <div
+            className='ps-2 border-start d-flex align-items-center'
+            onClick={() => resetClicked()}>
+            <p className={styles.resetButton}>Reset</p>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

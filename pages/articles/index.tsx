@@ -14,58 +14,67 @@ const ArticlesList = ({ articles }) => {
   const uniqueTags = (articles) => {
     const tags = [];
 
-    articles.forEach(article => {
-      article.tags.forEach(tag => {
+    articles.forEach((article) => {
+      article.tags.forEach((tag) => {
         if (!tags.includes(tag)) {
-          tags.push(tag)
+          tags.push(tag);
         }
-      })
-    })
+      });
+    });
 
     return tags;
-  }
+  };
 
   const sortOptions = [
     'Latest',
-    'Oldest'
+    'Oldest',
     //Most Popular
     //Least Popular
-  ]
+  ];
 
   const filter = (input: String, tag: String, sort: String) => {
-    let articlesList = articles
+    let articlesList = [...articles];
 
     if (input) {
       articlesList = filterByTitle(input, articlesList);
-      console.log(input, articlesList)
     }
 
-    if (tag) {
+    if (tag !== 'Tag') {
       articlesList = filterByTag(tag, articlesList);
-      console.log(tag, articlesList)
     }
 
-    if (sort) {
-      articlesList = sortArticles(sort, articlesList)
+    if (sort !== 'Sort') {
+      articlesList = sortArticles(sort, articlesList);
     }
 
     setArticlesList(articlesList);
-    console.log(input, tag, sort);
   };
 
   const sortArticles = (sort, articlesList) => {
     if (sort === 'Latest') {
-
+      return articlesList.sort((date1, date2) => {
+        date1 = new Date(date1.published);
+        date2 = new Date(date2.published);
+        return date2 - date1;
+      });
     }
-  }
+
+    if (sort === 'Oldest') {
+      return articlesList.sort((date1, date2) => {
+        date1 = new Date(date1.published);
+        date2 = new Date(date2.published);
+        return date1 - date2;
+      });
+    }
+  };
 
   const filterByTag = (tag: String, articleList) => {
-    return articleList.filter(article => {
+    return articleList.filter((article) => {
       if (article.tags.includes(tag)) {
-        return article
+        return article;
       }
-    })
-  }
+    });
+  };
 
   const filterByTitle = (filterText: String, articleList) => {
     if (!filterText || !articleList) return articles;
@@ -88,7 +97,11 @@ const ArticlesList = ({ articles }) => {
       <NavBar articleButton={false} />
       <section className={styles.listContainer}>
         <h1 className='px-2 mt-2 mb-4'>Articles</h1>
-        <ArticleSearch filter={filter} tagOptions={uniqueTags(articles)} sortOptions={sortOptions} />
+        <ArticleSearch
+          filter={filter}
+          tagOptions={uniqueTags(articles)}
+          sortOptions={sortOptions}
+        />
         <div>
           {articlesList &&
             articlesList.map((article) => {
