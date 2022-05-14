@@ -24,6 +24,7 @@ import htmlIcon from '../public/Images/html5Icon.png';
 import javascriptIcon from '../public/Images/javascriptIcon.svg';
 import azureSql from '../public/Images/logoAzureSql.png';
 import nodeIcon from '../public/Images/nodeIcon.png';
+import pythonIcon from '../public/Images/pythonIcon.png';
 import postgresSqlIcon from '../public/Images/postgresSqlIcon.png';
 import reactIcon from '../public/Images/reactIcon.png';
 import tailwindIcon from '../public/Images/tailwindIcon.png';
@@ -164,42 +165,42 @@ export default function Home() {
             <div className={styles.customFlexContainer}>
               <div className={styles.customItemContainer}>
                 <Image src={htmlIcon} width={50} height={50} alt='' />
-                <div className='media-body'>Html</div>
+                <p>Html</p>
               </div>
 
               <div className={styles.customItemContainer}>
                 <Image src={cssIcon} width={50} height={50} alt='' />
-                <div className='media-body'>CSS</div>
+                <p>CSS</p>
               </div>
 
               <div className={styles.customItemContainer}>
                 <Image src={javascriptIcon} width={50} height={50} alt='' />
-                <div className='media-body'>Javascript</div>
+                <p>Javascript</p>
               </div>
 
               <div className={styles.customItemContainer}>
                 <Image src={typescriptIcon} width={50} height={50} alt='' />
-                <div className='media-body'>Typescript</div>
+                <p>Typescript</p>
               </div>
 
               <div className={styles.customItemContainer}>
                 <Image src={reactIcon} width={50} height={50} alt='' />
-                <div className='media-body'>React.js</div>
+                <p>React.js</p>
               </div>
 
               <div className={styles.customItemContainer}>
                 <Image src={vueIcon} width={50} height={50} alt='' />
-                <div className='media-body'>Vue.js</div>
+                <p>Vue.js</p>
               </div>
 
               <div className={styles.customItemContainer}>
                 <Image src={tailwindIcon} width={50} height={50} alt='' />
-                <div className='media-body'>Tailwind CSS</div>
+                <p>Tailwind CSS</p>
               </div>
 
               <div className={styles.customItemContainer}>
                 <Image src={bootstrapIcon} width={50} height={50} alt='' />
-                <div className='media-body'>Bootstrap</div>
+                <p>Bootstrap</p>
               </div>
             </div>
           </div>
@@ -212,17 +213,22 @@ export default function Home() {
               <div className={styles.customFlexContainer}>
                 <div className={styles.customItemContainer}>
                   <Image src={nodeIcon} width={50} height={50} alt='' />
-                  <div className='media-body'>Node.js/ Express.js</div>
+                  <p>Node.js/ Express.js</p>
+                </div>
+
+                <div className={styles.customItemContainer}>
+                  <Image src={pythonIcon} width={50} height={50} alt='' />
+                  <p>Python</p>
                 </div>
 
                 <div className={styles.customItemContainer}>
                   <Image src={postgresSqlIcon} width={50} height={50} alt='' />
-                  <div className='media-body'>PostgreSQL</div>
+                  <p>PostgreSQL</p>
                 </div>
 
                 <div className={styles.customItemContainer}>
                   <Image src={azureSql} width={50} height={50} alt='' />
-                  <div className='media-body'>SQL Server</div>
+                  <p>SQL Server</p>
                 </div>
               </div>
             </div>
@@ -234,12 +240,12 @@ export default function Home() {
               <div className={styles.customFlexContainer}>
                 <div className={styles.customItemContainer}>
                   <Image src={gitIcon} width={50} height={50} alt='' />
-                  <div className='media-body'>Git</div>
+                  <p>Git</p>
                 </div>
 
                 <div className={styles.customItemContainer}>
                   <Image src={agileIcon} width={50} height={50} alt='' />
-                  <div className='media-body'>Agile Scrum</div>
+                  <p>Agile Scrum</p>
                 </div>
               </div>
             </div>
@@ -277,7 +283,7 @@ export default function Home() {
         <div className='row'>
           <div className='col-8'>
             <div className='media'>
-              <div className='media-body'>
+              <div>
                 <p className='mb-0'>
                   <b>Oregon State University:</b> Bachelor&apos;s of Science
                 </p>

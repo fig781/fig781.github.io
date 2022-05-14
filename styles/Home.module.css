@@ -93,6 +93,11 @@
   align-items: center;
   padding: 5px;
   font-size: large;
+  text-align: center;
+}
+
+.customItemContainer p {
+  margin: 0;
 }
 
 .customCardSize {
