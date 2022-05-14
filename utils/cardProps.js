@@ -1,7 +1,7 @@
 const cardProps = {
   codingStatsProps: {
     id: 1,
-    title: 'myCodingStats.com',
+    title: 'myCodingStats',
     subHeader: null,
     img: '',
     tags: [
@@ -18,7 +18,7 @@ const cardProps = {
     btn1: {
       display: true,
       text: 'View Live',
-      link: 'https://www.mycodingstats.com/',
+      link: 'https://my-coding-stats-com-client.vercel.app/',
     },
     btn2: {
       display: true,
