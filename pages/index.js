@@ -270,6 +270,7 @@ export default function Home() {
       <div className='container pt-5' id='projectsSection'>
         <h2 className='mb-3'>Hackathons</h2>
         <div className='row row-cols-1 row-cols-md-2'>
+          <DisplayCard cardInfo={cardPropData.spatialFront22Q2} />
           <DisplayCard cardInfo={cardPropData.cloudNativeHack} />
           <DisplayCard cardInfo={cardPropData.trimbleHack} />
           <DisplayCard cardInfo={cardPropData.quarantineHack} />
@@ -305,6 +306,24 @@ export default function Home() {
         <div className='row'>
           <div className='col-8'>
             <p>
+              <b>Software Developer </b>Spatial Front, Inc.
+            </p>
+            <ul>
+              <li>Building the frontend with React</li>
+            </ul>
+          </div>
+          <div className='col-4'>
+            <p>
+              <b>Remote</b> June 2022 - Current
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className='container'>
+        <div className='row'>
+          <div className='col-8'>
+            <p>
               <b>Application Support </b>Viewpoint Construction Software
             </p>
             <ul>
@@ -318,7 +337,7 @@ export default function Home() {
           </div>
           <div className='col-4'>
             <p>
-              <b>Portland, Oregon</b> January 2020 - Current
+              <b>Portland, Oregon</b> January 2020 - June 2022
             </p>
           </div>
         </div>
@@ -372,6 +391,7 @@ export default function Home() {
         <div className='row'>
           <div className='col-8'>
             <ul>
+              <li>Certified SAFe 5 Practitioner</li>
               <li>CSX Cybersecurity Fundamentals (CSXF)</li>
             </ul>
           </div>

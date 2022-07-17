@@ -182,6 +182,24 @@ const cardProps = {
       link: '',
     },
   },
+  spatialFront22Q2: {
+    id: 10,
+    title: 'Spatial Front 2022 Q2 Hackathon',
+    subHeader: 'Offline Capable Web App',
+    img: null,
+    tags: ['react', 'supabase', 'pwa'],
+    text: 'We created a website where a rancher can enter the primary grass type in their pasture. The website uses React for the frontend and Supabase for the backend. The app makes heavy use of the IndexDB API for offline data caching. The site will detect when a user goes offline, at which point all information entered will be cached until they are online again.',
+    btn1: {
+      display: false,
+      text: '',
+      link: '',
+    },
+    btn2: {
+      display: false,
+      text: '',
+      link: '',
+    },
+  },
 };
 
 export default cardProps;
