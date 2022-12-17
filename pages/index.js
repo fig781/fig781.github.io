@@ -30,6 +30,7 @@ import reactIcon from '../public/Images/reactIcon.png';
 import tailwindIcon from '../public/Images/tailwindIcon.png';
 import typescriptIcon from '../public/Images/typescript.jpeg';
 import vueIcon from '../public/Images/vueIcon.png';
+import angularIcon from '../public/Images/angularIcon.svg';
 
 import algoVisualizerImg from '../public/Images/algoVisualizer.png';
 import personalSiteImg from '../public/Images/personalSite.png';
@@ -194,6 +195,11 @@ export default function Home() {
               </div>
 
               <div className={styles.customItemContainer}>
+                <Image src={angularIcon} width={50} height={50} alt='' />
+                <p>Angular</p>
+              </div>
+
+              <div className={styles.customItemContainer}>
                 <Image src={tailwindIcon} width={50} height={50} alt='' />
                 <p>Tailwind CSS</p>
               </div>
@@ -309,7 +315,21 @@ export default function Home() {
               <b>Software Developer </b>Spatial Front, Inc.
             </p>
             <ul>
-              <li>Building the frontend with React</li>
+              USDA application: GRAS
+              <li>React, Typescript, Mobx, Sass, Jest</li>
+              <li>
+                Made significant contributions to the 508 compliance resulting in
+                100+ accessibility issues being fixed.
+              </li>
+              <li>Integrated the UI with the ESRI&apos;s GIS API.</li>
+              <li>Contributed to 80% code test coverage.</li>
+              <br></br>
+              DOT application: Artemis
+              <li>Angular, Typescript, RxJs, Sass, Jasmine/Karma</li>
+              <li>
+                Leading the team in setting up unit test best practices and making
+                large contributions to unit test code coverage.
+              </li>
             </ul>
           </div>
           <div className='col-4'>
@@ -328,11 +348,11 @@ export default function Home() {
             </p>
             <ul>
               <li>
-                Consistently close the most support cases each week while maintaining
-                positive customer feedback.
+                Consistently closed the most support cases each week while
+                maintaining positive customer feedback.
               </li>
-              <li>Teach and mentor all new team members.</li>
-              <li>Collaborating with development to fix 100+ product bugs.</li>
+              <li>Taught and mentored all new team members.</li>
+              <li>Collaborated with development to fix 100+ product bugs.</li>
             </ul>
           </div>
           <div className='col-4'>
