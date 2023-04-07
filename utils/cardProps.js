@@ -92,22 +92,27 @@ const cardProps = {
     },
   },
 
-  learnfluentProps: {
+  skyCapProps: {
     id: 5,
-    title: 'Learnfluent - Chrome Extension for foreign language learning',
+    title: 'SkyCapital Investment Strategies',
     subHeader: null,
     img: '',
-    tags: ['html', 'css', 'javascript'],
-    text: 'This is a chrome extension that will help you learn a foreign language. Each day you are given a new word from the language of your choice.',
+    tags: ['next.js',
+      'html',
+      'css',
+      'javascript',
+      'typescript',
+      'supabase'],
+    text: 'This is a fullstack site where my friend and I publicly manage an investment portfolio. We write articles about our investment strategies and investment activity. The site offers an email subscription to notify users when new articles are published.',
     btn1: {
       display: true,
-      text: 'Chrome Store',
-      link: 'https://chrome.google.com/webstore/detail/learnfluent/diffhlcafbihhmocdaknniaddfjefigh',
+      text: 'View Live',
+      link: 'https://skycapinvesting.com',
     },
     btn2: {
-      display: true,
+      display: false,
       text: 'Source Code',
-      link: 'https://github.com/fig781/chromeExtensionWordADay',
+      link: '',
     },
   },
 

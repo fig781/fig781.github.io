@@ -37,7 +37,7 @@ import personalSiteImg from '../public/Images/personalSite.png';
 import codingStatsImg from '../public/Images/codingStats2.png';
 import countryCurrencyImg from '../public/Images/country-currency.png';
 import keyValueDbImg from '../public/Images/keyValueDb.png';
-import learnFluentImg from '../public/Images/learnfluent.png';
+import skyCapImg from '../public/Images/skyCap.png';
 
 import { IconContext } from 'react-icons';
 import { FaGithub, FaLinkedin, FaDev } from 'react-icons/fa';
@@ -48,7 +48,7 @@ export default function Home() {
   cardPropData.sortingAlgoProps.img = algoVisualizerImg;
   cardPropData.keyValueProps.img = keyValueDbImg;
   cardPropData.currencyInfoProps.img = countryCurrencyImg;
-  cardPropData.learnfluentProps.img = learnFluentImg;
+  cardPropData.skyCapProps.img = skyCapImg;
 
   const copyToClipboard = () =>
     navigator.clipboard.writeText('adeneilers@gmail.com');
@@ -263,12 +263,12 @@ export default function Home() {
       <div className='container pt-5' id='projectsSection'>
         <h2 className='mb-3'>Projects</h2>
         <div className='row row-cols-1 row-cols-md-2'>
+          <DisplayCard cardInfo={cardPropData.skyCapProps} />
           <DisplayCard cardInfo={cardPropData.codingStatsProps} />
           <DisplayCard cardInfo={cardPropData.personalSiteProps} />
           <DisplayCard cardInfo={cardPropData.sortingAlgoProps} />
           <DisplayCard cardInfo={cardPropData.keyValueProps} />
           <DisplayCard cardInfo={cardPropData.currencyInfoProps} />
-          <DisplayCard cardInfo={cardPropData.learnfluentProps} />
         </div>
       </div>
 
@@ -315,6 +315,16 @@ export default function Home() {
               <b>Software Developer </b>Spatial Front, Inc.
             </p>
             <ul>
+              DOT application: Artemis
+              <li>Angular, Typescript, RxJs, Sass, Jasmine/Karma</li>
+              <li>
+                Leading the team in setting up unit test best practices and making
+                large contributions to unit test code coverage.
+              </li>
+              <li>Constructing significant UI redesigns based on Figma mockups.</li>
+              <li>Contributing to the AWS Lambda based REST API and Elasticsearch API.</li>
+              <li>Implemented user authorization using the CASL library.</li>
+              <br></br>
               USDA application: GRAS
               <li>React, Typescript, Mobx, Sass, Jest</li>
               <li>
@@ -323,13 +333,6 @@ export default function Home() {
               </li>
               <li>Integrated the UI with the ESRI&apos;s GIS API.</li>
               <li>Contributed to 80% code test coverage.</li>
-              <br></br>
-              DOT application: Artemis
-              <li>Angular, Typescript, RxJs, Sass, Jasmine/Karma</li>
-              <li>
-                Leading the team in setting up unit test best practices and making
-                large contributions to unit test code coverage.
-              </li>
             </ul>
           </div>
           <div className='col-4'>
