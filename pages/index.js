@@ -37,7 +37,7 @@ import personalSiteImg from '../public/Images/personalSite.png';
 import codingStatsImg from '../public/Images/codingStats2.png';
 import countryCurrencyImg from '../public/Images/country-currency.png';
 import keyValueDbImg from '../public/Images/keyValueDb.png';
-// import skyCapImg from '../public/Images/skyCap.png';
+import skyCapImg from '../public/Images/skyCap.PNG';
 
 import { IconContext } from 'react-icons';
 import { FaGithub, FaLinkedin, FaDev } from 'react-icons/fa';
@@ -48,7 +48,7 @@ export default function Home() {
   cardPropData.sortingAlgoProps.img = algoVisualizerImg;
   cardPropData.keyValueProps.img = keyValueDbImg;
   cardPropData.currencyInfoProps.img = countryCurrencyImg;
-  // cardPropData.skyCapProps.img = skyCapImg;
+  cardPropData.skyCapProps.img = skyCapImg;
 
   const copyToClipboard = () =>
     navigator.clipboard.writeText('adeneilers@gmail.com');
@@ -263,7 +263,7 @@ export default function Home() {
       <div className='container pt-5' id='projectsSection'>
         <h2 className='mb-3'>Projects</h2>
         <div className='row row-cols-1 row-cols-md-2'>
-          {/* <DisplayCard cardInfo={cardPropData.skyCapProps} /> */}
+          <DisplayCard cardInfo={cardPropData.skyCapProps} />
           <DisplayCard cardInfo={cardPropData.codingStatsProps} />
           <DisplayCard cardInfo={cardPropData.personalSiteProps} />
           <DisplayCard cardInfo={cardPropData.sortingAlgoProps} />
