@@ -38,9 +38,12 @@ import codingStatsImg from '../public/Images/codingStats2.png';
 import countryCurrencyImg from '../public/Images/country-currency.png';
 import keyValueDbImg from '../public/Images/keyValueDb.png';
 import skyCapImg from '../public/Images/skyCap.PNG';
+import dotNetSiteImg from '../public/Images/dotNetSite.PNG';
+import spaceGameSiteImg from '../public/Images/spaceGameSite.png'
 
 import { IconContext } from 'react-icons';
 import { FaGithub, FaLinkedin, FaDev } from 'react-icons/fa';
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 export default function Home() {
   cardPropData.codingStatsProps.img = codingStatsImg;
@@ -49,6 +52,8 @@ export default function Home() {
   cardPropData.keyValueProps.img = keyValueDbImg;
   cardPropData.currencyInfoProps.img = countryCurrencyImg;
   cardPropData.skyCapProps.img = skyCapImg;
+  cardPropData.dotNetPackages.img = dotNetSiteImg;
+  cardPropData.spaceMinorGame.img = spaceGameSiteImg;
 
   const copyToClipboard = () =>
     navigator.clipboard.writeText('adeneilers@gmail.com');
@@ -142,6 +147,18 @@ export default function Home() {
                       className: styles.customMarginRight,
                     }}>
                     <FaLinkedin />
+                  </IconContext.Provider>
+                </a>
+                <a
+                  className={styles.linkIcons}
+                  href='https://twitter.com/AdenEilers'
+                  target='_blank'
+                  rel='noreferrer'>
+                  <IconContext.Provider
+                    value={{
+                      className: styles.customMarginRight,
+                    }}>
+                    <FaSquareXTwitter />
                   </IconContext.Provider>
                 </a>
                 <a
@@ -263,6 +280,8 @@ export default function Home() {
       <div className='container pt-5' id='projectsSection'>
         <h2 className='mb-3'>Projects</h2>
         <div className='row row-cols-1 row-cols-md-2'>
+          <DisplayCard cardInfo={cardPropData.dotNetPackages} />
+          <DisplayCard cardInfo={cardPropData.spaceMinorGame} />
           <DisplayCard cardInfo={cardPropData.skyCapProps} />
           <DisplayCard cardInfo={cardPropData.codingStatsProps} />
           <DisplayCard cardInfo={cardPropData.personalSiteProps} />
@@ -312,6 +331,9 @@ export default function Home() {
         <div className='row'>
           <div className='col-8'>
             <p>
+              <b>Frontend Team Lead </b>Spatial Front, Inc.
+            </p>
+            <p>
               <b>Software Developer </b>Spatial Front, Inc.
             </p>
             <ul>
@@ -337,7 +359,10 @@ export default function Home() {
           </div>
           <div className='col-4'>
             <p>
-              <b>Remote</b> June 2022 - Current
+              <b>Remote</b> May 2024 - Current
+            </p>
+            <p>
+              <b>Remote</b> June 2022 - May 2024
             </p>
           </div>
         </div>
@@ -414,6 +439,7 @@ export default function Home() {
         <div className='row'>
           <div className='col-8'>
             <ul>
+              <li>AWS Certified Cloud Practitioner</li>
               <li>Certified SAFe 5 Practitioner</li>
               <li>CSX Cybersecurity Fundamentals (CSXF)</li>
             </ul>
@@ -457,6 +483,18 @@ export default function Home() {
                   className: styles.customMarginRight,
                 }}>
                 <FaLinkedin />
+              </IconContext.Provider>
+            </a>
+            <a
+              className={styles.linkIcons}
+              href='https://twitter.com/AdenEilers'
+              target='_blank'
+              rel='noreferrer'>
+              <IconContext.Provider
+                value={{
+                  className: styles.customMarginRight,
+                }}>
+                <FaSquareXTwitter />
               </IconContext.Provider>
             </a>
             <a

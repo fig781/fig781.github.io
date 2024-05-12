@@ -92,8 +92,53 @@ const cardProps = {
     },
   },
 
-  skyCapProps: {
+  dotNetPackages: {
     id: 5,
+    title: '.NET Packages Directory',
+    subHeader: null,
+    img: '',
+    tags: ['astro.js',
+      'html',
+      'css',
+      'javascript',
+    ],
+    text: 'This is a site with a currated list of the best and most popular .NET packages. It is specifically created to make revenue from Google Ads. It has an easily searchable domain and I put a lot of effort into the sites SEO.',
+    btn1: {
+      display: true,
+      text: 'View Live',
+      link: 'https://frameworkdotnet.com',
+    },
+    btn2: {
+      display: true,
+      text: 'Source Code',
+      link: 'https://github.com/fig781/dotnet-packages-directory',
+    },
+  },
+
+  spaceMinorGame: {
+    id: 6,
+    title: 'Unreleased Space Minor Mobile Game',
+    subHeader: null,
+    img: '',
+    tags: ['react native',
+      'javascript',
+      'typescript',
+    ],
+    text: 'This is an un-released android game. It is a text based rpg about a space minor. The game was taking way too long to build and was not very fun. I still learned a lot about React Native though. Feel free to run it on your phone.',
+    btn1: {
+      display: false,
+      text: 'View Live',
+      link: '',
+    },
+    btn2: {
+      display: true,
+      text: 'Source Code',
+      link: 'https://github.com/fig781/space-minor-app',
+    },
+  },
+
+  skyCapProps: {
+    id: 7,
     title: 'SkyCapital Investment Strategies',
     subHeader: null,
     img: '',
@@ -117,7 +162,7 @@ const cardProps = {
   },
 
   keyValueProps: {
-    id: 6,
+    id: 8,
     title: 'A Key Value Database',
     subHeader: null,
     img: '',
@@ -132,7 +177,7 @@ const cardProps = {
   },
 
   cloudNativeHack: {
-    id: 7,
+    id: 9,
     title: 'Cloud Native Hackathon 2021',
     subHeader: 'Call Sentiment Tracker',
     img: null,
@@ -151,7 +196,7 @@ const cardProps = {
   },
 
   trimbleHack: {
-    id: 8,
+    id: 10,
     title: 'Trimble Hackathon 2020',
     subHeader: 'Crystal Reports Information Updater',
     img: null,
@@ -170,7 +215,7 @@ const cardProps = {
   },
 
   quarantineHack: {
-    id: 9,
+    id: 11,
     title: 'QuarantineHacks 2020',
     subHeader: 'League of Legends Statistics',
     img: null,
@@ -188,7 +233,7 @@ const cardProps = {
     },
   },
   spatialFront22Q2: {
-    id: 10,
+    id: 12,
     title: 'Spatial Front 2022 Q2 Hackathon',
     subHeader: 'Offline Capable Web App',
     img: null,
