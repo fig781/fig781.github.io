@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaDev } from 'react-icons/fa';
+import { FaSquareXTwitter } from 'react-icons/fa6'
 import styles from '../../styles/Footer.module.css';
 
 const Footer = () => {
@@ -18,6 +19,13 @@ const Footer = () => {
           target='_blank'
           rel='noreferrer'>
           <FaLinkedin />
+        </a>
+        <a
+          className={styles.linkIcons}
+          href='https://twitter.com/AdenEilers'
+          target='_blank'
+          rel='noreferrer'>
+          <FaSquareXTwitter />
         </a>
         <a
           className={styles.linkIcons}
