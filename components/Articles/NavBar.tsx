@@ -8,10 +8,8 @@ const NavBar = ({ articleButton }) => {
   return (
     <header className={styles.navBar}>
       <div className={styles.innerContainer}>
-        <Link href='/'>
-          <a className={styles.logo}>
-            <h3>Aden Eilers</h3>
-          </a>
+        <Link href='/' className={styles.logo}>
+          <h3>Aden Eilers</h3>
         </Link>
         {articleButton && (
           <Link href='/articles' passHref>

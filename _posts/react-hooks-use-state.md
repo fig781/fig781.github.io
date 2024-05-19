@@ -1,3 +1,9 @@
+---
+title: 'React Hooks: useState()'
+pubDate: '01-21-2022'
+tags: ['react', 'javascript']
+---
+
 **What are React Hooks?**
 They are functions in React that allow you to add react functionality to function based components.
 

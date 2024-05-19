@@ -1,3 +1,9 @@
+---
+title: 'Website Accessibility with HTML'
+pubDate: '03-26-2022'
+tags: ['html', 'beginner']
+---
+
 **What is website accessibility?**
 Some users on your sites will use screen readers, only use a keyboard to navigate, use screen magnification or use speech input software. In HTML there are a number of ways you can make your sites accessible to these users.
 

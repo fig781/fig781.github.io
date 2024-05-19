@@ -1,3 +1,9 @@
+---
+title: 'JavaScript Arrow Functions'
+pubDate: '04-24-2022'
+tags: ['javascript', 'beginner']
+---
+
 **What is an arrow function in JavaScript?**
 Arrow functions are an alternative way of writing functions in JavaScript. There are a few limitations compared to the traditional function that will be discussed in this article.
 

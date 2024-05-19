@@ -1,3 +1,9 @@
+---
+title: 'What I did this Week: 5/15/22'
+pubDate: '05-15-2022'
+tags: ['javascript', 'performance']
+---
+
 Was not really sure what I wanted to write about, so I thought I would just write about a few of my thoughts I had this week.
 
 **Heroku's free tier**

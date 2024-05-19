@@ -1,3 +1,9 @@
+---
+title: 'Website Accessibility with CSS'
+pubDate: '04-16-2022'
+tags: ['css', 'beginner']
+---
+
 **What is website accessibility?**
 Some users on your sites will use screen readers, only use a keyboard to navigate, use screen magnification, use speech input software, or use an older version of their browser. In CSS there are a number of ways you can make your sites accessible to these users.
 

@@ -1,3 +1,9 @@
+---
+title: 'Choosing Technology for Solo and Team Projects'
+pubDate: '05-11-2024'
+tags: ['career']
+---
+
 Modern web development offers a plethora of frameworks, libraries, and products, each catering to different project needs. However, the choice between these tools varies significantly depending on whether you're working solo or as part of a large team. Let's delve into how the selection process differs and why it's crucial to align your choices with your project's scale and priorities.
 
 **Solo Projects: Prioritizing Speed and Simplicity**

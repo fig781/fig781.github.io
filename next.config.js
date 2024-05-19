@@ -1,6 +1,6 @@
 module.exports = {
-  reactStrictMode: true,
-  images: {
-    domains: ['dev-to-uploads.s3.amazonaws.com'],
-  },
-};
+  webpack: (config, { isServer }) => {
+    if (!isServer) config.resolve.fallback.fs = false;
+    return config;
+  }
+}

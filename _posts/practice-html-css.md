@@ -1,3 +1,10 @@
+---
+title: 'Good way to Practice HTML and CSS for a Technical Interview'
+pubDate: '04-10-2022'
+tags: ['html', 'css']
+---
+
+
 I recently had a technical front end interview. I did not do as well on the CSS portion of the interview as I had hoped. As a result, I have been practicing my CSS skills over the last week. I found a site called [https://www.frontendmentor.io/](https://www.frontendmentor.io/) that has been a great practice tool.
 
 If you are just getting started with frontend web developer, or are practicing for an interview, then I highly recommend this site.

@@ -1,5 +1,5 @@
 import { supabase } from '../../utils/supabaseClient';
-import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import parseMarkdown from '../../utils/parseMarkdown';
 import NavBar from '../../components/Articles/NavBar';
 import Footer from '../../components/Articles/Footer';
@@ -8,8 +8,11 @@ import formattedDisplayPublishedDate from '../../utils/formatDisplayPublishedDat
 import CBadge from '../../components/CBadge';
 import Head from 'next/head';
 import MarkdownRenderer from '../../components/MarkdownDisplay/MarkdownRenderer';
+import { getAllPosts, getPostBySlug } from "../../utils/articleHelpers";
 
-const Article = ({ article, parsedMarkdown }) => {
+//@ts-ignore
+const Article = ({ article, markdown }) => {
+
   return (
     <main className={styles.main}>
       <Head>
@@ -28,9 +31,9 @@ const Article = ({ article, parsedMarkdown }) => {
           </p>
           <div className='mb-5'>
             {article.tags &&
-              article.tags.map((tag: string) => {
+              article.tags.map((tag: string, i: number) => {
                 return (
-                  <span key={`${article.id}${tag}`}>
+                  <span key={`${i}${tag}`}>
                     <CBadge tag={tag} />
                   </span>
                 );
@@ -39,7 +42,7 @@ const Article = ({ article, parsedMarkdown }) => {
         </header>
 
         {/*Proper markdown display component goes here */}
-        <MarkdownRenderer ast={parsedMarkdown} />
+        <MarkdownRenderer ast={markdown} />
       </div>
       <Footer />
     </main>
@@ -47,63 +50,32 @@ const Article = ({ article, parsedMarkdown }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  try {
-    const articleId = params.article;
+  //@ts-ignore
+  const post = getPostBySlug(params.slug);
 
-    let { data: article, error: articleError } = await supabase
-      .from('articles')
-      .select(
-        'id, title, published, articleFilePath, tags, devURL, devPublicReactionsCount'
-      )
-      .eq('id', articleId);
+  const parsedMarkdown = await parseMarkdown(post.content || "");
 
-    if (articleError) throw articleError;
-
-    const { data: articleFile, error: articleFileError } = await supabase.storage
-      .from('articles')
-      .download(article[0].articleFilePath);
-
-    if (articleFileError) throw articleFileError;
-
-    const blobToText = await articleFile.text();
-    const parsedMarkdown = await parseMarkdown(blobToText);
-
-    return {
-      props: {
-        article: article[0],
-        parsedMarkdown,
-      },
-    };
-  } catch (error) {
-    //likely want to log this
-    console.log(error);
-    return {
-      props: {
-        article: [],
-        parsedMarkdown: '',
-      },
-    };
+  return {
+    props: {
+      article: post,
+      markdown: parsedMarkdown
+    }
   }
 };
 
 export const getStaticPaths = async () => {
-  try {
-    let { data, error } = await supabase
-      .from('articles')
-      .select('id')
-      .eq('isVisable', true)
-      .eq('isDeleted', false);
+  const posts = getAllPosts();
 
-    if (error) throw error;
-
-    return {
-      paths: data.map((article) => {
-        return { params: { article: article.id.toString() } };
-      }),
-      fallback: false,
-    };
-  } catch (error) {
-    console.log(error);
-  }
+  return {
+    paths: posts.map((article) => {
+      return {
+        params: {
+          slug: article.slug
+        }
+      }
+    }),
+    fallback: false,
+  };
 };
+
 export default Article;

@@ -7,8 +7,10 @@ import ArticleListItem from '../../components/Articles/ArticleListItem';
 import Footer from '../../components/Articles/Footer';
 import ArticleSearch from '../../components/Articles/ArticleSearch';
 import Head from 'next/head';
+import { getAllPosts } from '../../utils/articleHelpers';
 
 const ArticlesList = ({ articles }) => {
+
   const [articlesList, setArticlesList] = useState(articles);
 
   const uniqueTags = (articles) => {
@@ -53,16 +55,16 @@ const ArticlesList = ({ articles }) => {
   const sortArticles = (sort, articlesList) => {
     if (sort === 'Latest') {
       return articlesList.sort((date1, date2) => {
-        date1 = new Date(date1.published);
-        date2 = new Date(date2.published);
+        date1 = new Date(date1.pubDate);
+        date2 = new Date(date2.pubDate);
         return date2 - date1;
       });
     }
 
     if (sort === 'Oldest') {
       return articlesList.sort((date1, date2) => {
-        date1 = new Date(date1.published);
-        date2 = new Date(date2.published);
+        date1 = new Date(date1.pubDate);
+        date2 = new Date(date2.pubDate);
         return date1 - date2;
       });
     }
@@ -105,7 +107,7 @@ const ArticlesList = ({ articles }) => {
         <div>
           {articlesList &&
             articlesList.map((article) => {
-              return <ArticleListItem key={article.id} article={article} />;
+              return <ArticleListItem key={article.title} article={article} />;
             })}
         </div>
       </section>
@@ -115,30 +117,13 @@ const ArticlesList = ({ articles }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  try {
-    let { data: articles, error } = await supabase
-      .from('articles')
-      .select('id, title, published, tags')
-      .eq('isVisable', true)
-      .eq('isDeleted', false)
-      .order('published', { ascending: false });
+  const articles = getAllPosts();
 
-    if (error) throw error;
-
-    return {
-      props: {
-        articles: articles,
-      },
-    };
-  } catch (error) {
-    //likely want to log this
-    console.log(error);
-    return {
-      props: {
-        articles: [],
-      },
-    };
-  }
+  return {
+    props: {
+      articles: articles
+    },
+  };
 };
 
 export default ArticlesList;

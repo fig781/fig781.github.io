@@ -1,3 +1,9 @@
+---
+title: 'Javascript Spread Operator (...)'
+pubDate: '03-06-2022'
+tags: ['javascript', 'beginner']
+---
+
 **What is the Spread Operator?**
 This syntax is used to succinctly pass multiple values from either an Array or Object to an expression where elements are expected. Examples are the best way to show this.
 

@@ -1,3 +1,9 @@
+---
+title: 'JavaScript, var, let and const'
+pubDate: '03-13-2022'
+tags: ['javascript', 'beginner']
+---
+
 **What do the key words `var`, `let` and `const` do?**
 These key words are used to declare variables in JavaScript.
 

@@ -1,3 +1,9 @@
+---
+title: 'Linked List in JavaScript'
+pubDate: '03-20-2022'
+tags: ['javascript', 'algorithms']
+---
+
 **What is a Linked List?**
 A linked list data structure involves a series of Nodes linked together. Each Node will have a data value and a reference to the next Node in the list. In the last Node, the reference will be set to `null`. Linked lists are not commonly used in front end web development, but they are still very popular for interview coding problems.
 

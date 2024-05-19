@@ -1,3 +1,9 @@
+---
+title: 'Intro to Apache Arrow'
+pubDate: '02-27-2022'
+tags: ['python', 'performance']
+---
+
 **What is Apache Arrow?**
 Apache Arrow is a series of libraries that enable large data systems to process and transfer data quickly and efficiently. It is used by AWS Data Wrangler, the python library Pandas, MATLAB and many other technologies. The primary component of Apache Arrow is the in-memory columnar format specification used to represent table-like datasets in-memory.
 

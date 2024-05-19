@@ -1,3 +1,9 @@
+---
+title: 'React Hooks: useMemo()'
+pubDate: '02-13-2022'
+tags: ['react', 'javascript']
+---
+
 **What are React hooks?**
 They are functions in React that allow you to add react functionality to function based components.
 
