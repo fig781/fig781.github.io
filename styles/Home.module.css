@@ -16,6 +16,7 @@
   font-weight: 300;
   color: var(--color-header-secondary);
 }
+
 .navLinks a:hover {
   color: rgb(212, 212, 212);
 }
@@ -23,6 +24,7 @@
 .btnWhite {
   background-color: white;
   color: black;
+  margin-right: 10px;
 }
 
 .btnWhite a {
@@ -78,6 +80,7 @@
   width: 100%;
   gap: 16px;
 }
+
 .customFlexContainer {
   display: flex;
   flex-direction: row;
@@ -146,6 +149,7 @@
     background-color: #282d30;
     margin-top: 10px;
   }
+
   .navbar1 a {
     padding-left: 15px !important;
     font-weight: 500;

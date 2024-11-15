@@ -39,7 +39,8 @@ import countryCurrencyImg from '../public/Images/country-currency.png';
 import keyValueDbImg from '../public/Images/keyValueDb.png';
 import skyCapImg from '../public/Images/skyCap.PNG';
 import dotNetSiteImg from '../public/Images/dotNetSite.PNG';
-import spaceGameSiteImg from '../public/Images/spaceGameSite.png'
+import spaceGameSiteImg from '../public/Images/spaceGameSite.png';
+import mobileCardGameImg from '../public/Images/mobileCardGameImg.jpg';
 
 import { IconContext } from 'react-icons';
 import { FaGithub, FaLinkedin, FaDev } from 'react-icons/fa';
@@ -54,6 +55,7 @@ export default function Home() {
   cardPropData.skyCapProps.img = skyCapImg;
   cardPropData.dotNetPackages.img = dotNetSiteImg;
   cardPropData.spaceMinorGame.img = spaceGameSiteImg;
+  cardPropData.mobileCardGame.img = mobileCardGameImg;
 
   const copyToClipboard = () =>
     navigator.clipboard.writeText('adeneilers@gmail.com');
@@ -94,6 +96,9 @@ export default function Home() {
               </Nav>
             </Navbar.Collapse>
             <Nav className={styles.articleButtonNav}>
+              <Link href='/robotics' passHref>
+                <Button className={`btn ${styles.btnWhite}`}>Robots</Button>
+              </Link>
               <Link href='/articles' passHref>
                 <Button className={`btn ${styles.btnWhite}`}>Articles</Button>
               </Link>
@@ -280,6 +285,7 @@ export default function Home() {
       <div className='container pt-5' id='projectsSection'>
         <h2 className='mb-3'>Projects</h2>
         <div className='row row-cols-1 row-cols-md-2'>
+          <DisplayCard cardInfo={cardPropData.mobileCardGame} />
           <DisplayCard cardInfo={cardPropData.dotNetPackages} />
           <DisplayCard cardInfo={cardPropData.spaceMinorGame} />
           <DisplayCard cardInfo={cardPropData.skyCapProps} />

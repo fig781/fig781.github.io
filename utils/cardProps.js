@@ -137,8 +137,30 @@ const cardProps = {
     },
   },
 
-  skyCapProps: {
+  mobileCardGame: {
     id: 7,
+    title: 'In Progress Mobile Card Game',
+    subHeader: null,
+    img: '',
+    tags: ['react native',
+      'javascript',
+      'typescript',
+    ],
+    text: 'This is an ongoing project for an Android game similar to Harthstone.',
+    btn1: {
+      display: false,
+      text: 'View Live',
+      link: '',
+    },
+    btn2: {
+      display: false,
+      text: 'Source Code',
+      link: '',
+    },
+  },
+
+  skyCapProps: {
+    id: 8,
     title: 'SkyCapital Investment Strategies',
     subHeader: null,
     img: '',
@@ -162,7 +184,7 @@ const cardProps = {
   },
 
   keyValueProps: {
-    id: 8,
+    id: 9,
     title: 'A Key Value Database',
     subHeader: null,
     img: '',
@@ -177,7 +199,7 @@ const cardProps = {
   },
 
   cloudNativeHack: {
-    id: 9,
+    id: 10,
     title: 'Cloud Native Hackathon 2021',
     subHeader: 'Call Sentiment Tracker',
     img: null,
@@ -196,7 +218,7 @@ const cardProps = {
   },
 
   trimbleHack: {
-    id: 10,
+    id: 11,
     title: 'Trimble Hackathon 2020',
     subHeader: 'Crystal Reports Information Updater',
     img: null,
@@ -215,7 +237,7 @@ const cardProps = {
   },
 
   quarantineHack: {
-    id: 11,
+    id: 12,
     title: 'QuarantineHacks 2020',
     subHeader: 'League of Legends Statistics',
     img: null,
@@ -233,7 +255,7 @@ const cardProps = {
     },
   },
   spatialFront22Q2: {
-    id: 12,
+    id: 13,
     title: 'Spatial Front 2022 Q2 Hackathon',
     subHeader: 'Offline Capable Web App',
     img: null,
