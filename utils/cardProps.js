@@ -174,7 +174,7 @@ const cardProps = {
     btn1: {
       display: true,
       text: 'View Live',
-      link: 'https://skycapinvesting.com',
+      link: 'https://financial-blog-fig781.vercel.app/',
     },
     btn2: {
       display: false,

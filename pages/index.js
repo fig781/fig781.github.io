@@ -96,9 +96,9 @@ export default function Home() {
               </Nav>
             </Navbar.Collapse>
             <Nav className={styles.articleButtonNav}>
-              <Link href='/robotics' passHref>
+              {/* <Link href='/robotics' passHref>
                 <Button className={`btn ${styles.btnWhite}`}>Robots</Button>
-              </Link>
+              </Link> */}
               <Link href='/articles' passHref>
                 <Button className={`btn ${styles.btnWhite}`}>Articles</Button>
               </Link>
