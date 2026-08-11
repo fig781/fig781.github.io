@@ -4,7 +4,7 @@
   --bg-color: #0066ff;
   --color-header-secondary: rgba(255, 255, 255, 0.8);
   --color-paragraph-secondary: lightslategrey;
-  
+
   /* Fonts */
   --headers-font: ff-tisa-sans-web-pro, sans-serif;
   --paragraph-font: 'proxima-nova', sans-serif;
@@ -68,7 +68,7 @@ textarea {
 
 /* HERO SECTION */
 .hero {
-  background-image: url('Images/Bgs/heroBg3840.svg');
+  background-image: url('public/Bgs/heroBg3840.svg');
   background-color: white;
   height: 100vh;
   background-size: cover;
@@ -93,10 +93,12 @@ textarea {
   background-color: white;
   color: black;
   margin-right: 10px;
+  display: inline-block;
 }
 
 .btnWhite a {
   color: black;
+  text-decoration: none;
 }
 
 .btnWhite:hover {
@@ -129,6 +131,10 @@ textarea {
 .linkIcons {
   font-size: 2.5rem;
   color: white;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .linkIcons:hover {
@@ -178,7 +184,7 @@ textarea {
 /* CONTACT (removed but keeping styles for reference if needed) */
 .contactSection {
   background-color: var(--bg-color);
-  background-image: url('Images/Bgs/contactBg3840.svg');
+  background-image: url('public/Bgs/contactBg3840.svg');
   background-size: cover;
 }
 
@@ -194,17 +200,33 @@ textarea {
 }
 
 /* PROJECT CARDS */
+.card-body {
+  position: relative;
+  z-index: 1;
+}
+
 .btnProjects {
-  background-color: var(--bg-color);
+  background-color: var(--bg-color) !important;
+  color: white !important;
+  border: none;
+  z-index: 2;
+  position: relative;
 }
 
 .btnProjects a {
-  color: white;
+  color: white !important;
+  text-decoration: none;
+  pointer-events: auto;
 }
 
 .btnProjects:hover {
   transform: scale(0.97, 0.97);
   background-color: var(--bg-color);
+  color: white !important;
+}
+
+.btnProjects:hover a {
+  color: white !important;
 }
 
 .projectButtons {
@@ -215,6 +237,7 @@ textarea {
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 8px;
+  z-index: 3;
 }
 
 .customMarginBottom {
@@ -290,8 +313,10 @@ textarea {
   font-size: 2.5rem;
   color: rgb(27, 27, 27);
   padding: 0 10px;
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .footer-alt .linkIcons:hover {
@@ -319,11 +344,11 @@ textarea {
 /* MEDIA QUERIES */
 @media (max-width: 1920px) {
   .hero {
-    background-image: url('Images/Bgs/heroBg1920.svg');
+    background-image: url('public/Bgs/heroBg1920.svg');
   }
 
   .contactSection {
-    background-image: url('Images/Bgs/contactBg1920.svg');
+    background-image: url('public/Bgs/contactBg1920.svg');
   }
 }
 
@@ -333,30 +358,39 @@ textarea {
   }
 }
 
+.articleButtonNav {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  z-index: 1000;
+  display: block !important;
+}
+
+.navbar1 {
+  z-index: 1;
+  background-color: #282d30;
+  margin-top: 10px;
+}
+
+.navbar1 a {
+  padding-left: 15px !important;
+  font-weight: 500;
+  border-bottom: solid 1px grey;
+}
+
 @media (max-width: 576px) {
-  .navbar1 {
-    z-index: 1;
-    background-color: #282d30;
-    margin-top: 10px;
-  }
-
-  .navbar1 a {
-    padding-left: 15px !important;
-    font-weight: 500;
-    border-bottom: solid 1px grey;
-  }
-
   .articleButtonNav {
     position: absolute;
     right: 12px;
     top: 8px;
+    display: block !important;
   }
 
   .hero {
-    background-image: url('Images/Bgs/heroBg576.svg');
+    background-image: url('public/Bgs/heroBg576.svg');
   }
 
   .contactSection {
-    background-image: url('Images/Bgs/contactBg576.svg');
+    background-image: url('public/Bgs/contactBg576.svg');
   }
 }
