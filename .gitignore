@@ -1,51 +1,36 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-*.txt
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# vercel
-.vercel
-
-#todo
-todo.txt
-
-+++ .gitignore (修改后)
 ```
 # Dependencies
 node_modules/
 
 # Build outputs
+_dist/
 dist/
 build/
-target/
+_site/
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
 # Python
 __pycache__/
@@ -53,53 +38,31 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
-env/
-venv/
-.venv/
-.ENV
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
+*.so
 .coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-*.pot
-*.pyc
-*.pyo
-*.pyd
-.MF
 .pytest_cache/
 .mypy_cache/
 
-# Logs
-*.log
+# Ruby
+.bundle/
+vendor/bundle/
+*.gem
+*.rbc
+!.keep
+config.ru
+*.sqlite3
+*.sqlite3-journal
+.ruby-version
+.rubocop.yml
+pkg/
+spec/reports/
+test/tmp/
+test/version_tmp/
+tmp/
 
-# Environment variables
-.env
-.env.local
-.env.*
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
+# Jekyll/Eleventy
+.sass-cache/
+.jekyll-cache/
+.ssg-cache/
+.eleventy-cache/
+```

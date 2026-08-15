@@ -1,0 +1,53 @@
+# Welcome to Jekyll!
+#
+# This config file contains every setting needed to build your site.
+# Look here for help: https://jekyllrb.com/docs/configuration/
+
+# Site settings
+title: Aden Eilers
+description: Software engineering through research and development.
+email: adeneilers@gmail.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://fig781.github.io" # the base hostname & protocol for your site
+github_username: fig781
+
+# Build settings
+theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Collections
+collections:
+  articles:
+    output: true
+    permalink: /articles/:title/
+
+# Defaults
+defaults:
+  - scope:
+      path: "_articles"
+      type: articles
+    values:
+      layout: article
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
