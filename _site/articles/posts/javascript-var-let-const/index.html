@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>JavaScript, var, let and const</title>
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+  <nav class="navBar">
+    <div class="innerContainer">
+      <a href="/" class="logo">
+        <h3>Aden Eilers</h3>
+      </a>
+      <div class="d-flex align-items-center">
+        <button class="btn btn-link text-dark me-3" id="darkModeToggle" onclick="toggleDarkMode()" title="Toggle dark mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278"/>
+          </svg>
+        </button>
+        <a href="/" class="btn btnWhite">Home</a>
+        <a href="/articles/" class="btn btnWhite">Articles</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ARTICLE CONTENT -->
+  <article class="container pt-5 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1>JavaScript, var, let and const</h1>
+        <p class="text-muted small">Published on March 13, 2022</p>
+        <div class="mb-4">
+          
+          <span class="badge bg-secondary">javascript</span>
+          
+          <span class="badge bg-secondary">beginner</span>
+          
+        </div>
+        <div class="article-content">
+          <p><strong>What do the key words <code>var</code>, <code>let</code> and <code>const</code> do?</strong>
+These key words are used to declare variables in JavaScript.</p>
+<pre><code class="language-js">var firstName = 'Bob';
+let lastName = 'Bobson';
+const age = 20;
+</code></pre>
+<p>Both <code>let</code> and <code>var</code> can have their values changed after declaration and can be initialized without a value. Variables declared with <code>const</code> cannot change, and a value must be assigned when the variable is declared.</p>
+<pre><code class="language-js">var firstName = 'Bob';
+let lastName = 'Bobson';
+const age = 20;
+
+firstName = 'John'; // Runs without issue
+lastName = 'Smith'; // Runs without issue
+age = 80; // Causes TypeError: Assignment to constant variable.
+</code></pre>
+<pre><code class="language-js">// Variables declared without assigning a value
+
+let firstName; //Runs without issue
+var lastName; // Runs without issue
+const age; // Causes SyntaxError: Missing initializer in const declaration
+</code></pre>
+<p>A few things to note about <code>const</code></p>
+<ul>
+<li>If the variable is an Object, the object attribute values can be changed and additional attributes can also be added. The variable cannot be reassigned.</li>
+<li>If the variable is an Array, the values in the array can change, but the variable cannot be reassigned.</li>
+<li>You will sometimes see <code>const</code> variables written in all caps <code>const PORT = 8080</code>. This is a stylistic choice.</li>
+</ul>
+<pre><code class="language-js">// Objects
+const obj = {
+  firstName: 'Bob',
+};
+
+obj.firstName = 'John'; // Runs without issue
+obj.lastName = 'Bobson'; // Runs without issue
+delete obj.firstName; // Runs without issue
+obj = {}; // Causes TypeError: Assignment to constant variable.
+
+// Arrays
+const arr = [1, 2, 3];
+arr.push(4); // Runs without issue
+arr = []; // Causes TypeError: Assignment to constant variable.
+</code></pre>
+<p><strong>Understanding scope</strong>
+There are three types of scope in JavaScript. The scope of a variable determines which other parts of the program can access it.</p>
+<ul>
+<li>Function Scope</li>
+<li>Block Scope</li>
+<li>Global Scope</li>
+</ul>
+<p><strong>Function Scope</strong>
+Variables declared within a function will have functional scope. Whether you declare a variable as either <code>var</code>, <code>let</code> or <code>const</code>, it will only be accessible within the function it was declared in.</p>
+<pre><code class="language-js">// Function Scope
+function doSomething() {
+  var firstName = 'Bob';
+  let lastName = 'Bobson';
+  const age = 20;
+}
+doSomething();
+
+console.log(firstName);
+console.log(lastName);
+console.log(age);
+
+// The three variables are not accessible outside of
+// the function so they cause a ReferenceError
+</code></pre>
+<p><strong>Block Scope</strong>
+You can create block scope by wrapping your code in <code>{}</code>. Both <code>let</code> and <code>const</code> are not accessible outside of the block they were defined in. On the other hand, <code>var</code> is accessible outside of the block it is defined in.</p>
+<pre><code class="language-js">// Block Scope
+{
+  var firstName = 'Bob';
+  let lastName = 'Bobson';
+  const age = 20;
+}
+
+console.log(firstName); // Will run
+console.log(lastName); // Causes ReferenceError: lastName is not defined
+console.log(age); // Causes ReferenceError: age is not defined
+</code></pre>
+<p>Block Scoping can also be seen in <code>for-loops</code>.</p>
+<pre><code class="language-js">for (var x = 0; x &lt; 10; x++) {
+  console.log(x);
+}
+
+console.log(x);
+// Runs without issues
+</code></pre>
+<pre><code class="language-js">for (let x = 0; x &lt; 10; x++) {
+  console.log(x);
+}
+
+console.log(x);
+// Causes ReferenceError: x is not defined
+</code></pre>
+<p><strong>Global Scope</strong>
+These are variables declared outside of the functional scope and block scope. They can be accessed globally in the JavaScript program. It is advisable to declare a limited number of variables like this. Having many global variables in a JavaScript program can often lead to unforeseen bugs as the program becomes more complex.</p>
+<pre><code class="language-js">var firstName = 'Bob';
+let lastName = 'Bobson';
+const age = 20;
+
+// Function Scope
+function doSomething() {
+  console.log(firstName);
+  console.log(lastName);
+  console.log(age);
+}
+doSomething();
+
+// Block Scope
+{
+  console.log(firstName);
+  console.log(lastName);
+  console.log(age);
+}
+
+// Prints the variables without any errors
+</code></pre>
+<p><strong>Key Takeaways</strong></p>
+<ul>
+<li>Do not use <code>var</code>, use <code>let</code> and <code>const</code> instead. Since <code>var</code> is not block scoping, it can lead to unforeseen bugs in your program.</li>
+<li>Use <code>const</code> when you know the value will not change. Use <code>let</code> when the value will change</li>
+</ul>
+<p>More info can be found on the MDN docs:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var">var</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">let</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">const</a></li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <div class="footer-alt mt-5">
+    <div>
+      <a class="linkIcons" href="https://github.com/fig781" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 20px;">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+        </svg>
+      </a>
+      <a class="linkIcons" href="https://www.linkedin.com/in/aden-eilers/" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 20px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401m-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.82 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.357 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+      </a>
+      <a class="linkIcons" href="https://twitter.com/AdenEilers" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 20px;">
+          <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+        </svg>
+      </a>
+      <a class="linkIcons" href="https://dev.to/fig781" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M11.987 3.859c-.195-.125-.485-.192-.82-.192h-6.34c-.925 0-1.608.24-2.087.732-.479.492-.72 1.212-.72 2.203v3.006c0 .99.237 1.723.71 2.23.474.507 1.17.76 2.07.76h1.787l.686.938c.14.196.32.293.53.293.07 0 .14-.01.21-.03.26-.08.44-.26.54-.55l.42-1.65h1.02c.33 0 .62-.07.82-.19.2-.13.3-.32.3-.58V4.44c0-.26-.1-.46-.3-.58zM9.98 9.27h-1.4v1.14l-1.12-1.14H4.82c-.26 0-.45-.06-.58-.18-.13-.12-.19-.32-.19-.59V6.66c0-.27.06-.47.19-.59.13-.12.32-.18.58-.18h2.64l1.12-1.14v1.14h1.4c.26 0 .45.06.58.18.13.12.19.32.19.59v1.91c0 .27-.06.47-.19.59-.13.12-.32.18-.58.18z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyToClipboard() {
+      const email = 'adeneilers@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

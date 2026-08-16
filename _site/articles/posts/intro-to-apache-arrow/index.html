@@ -1,8 +1,15 @@
----
-layout: base.njk
-title: "{{ title }}"
----
-  <!-- NAVBAR -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>Intro to Apache Arrow</title>
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
   <nav class="navBar">
     <div class="innerContainer">
       <a href="/" class="logo">
@@ -24,15 +31,60 @@ title: "{{ title }}"
   <article class="container pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h1>{{ title }}</h1>
-        <p class="text-muted small">Published on {{ pubDate | date }}</p>
+        <h1>Intro to Apache Arrow</h1>
+        <p class="text-muted small">Published on February 27, 2022</p>
         <div class="mb-4">
-          {% for tag in tags %}
-          <span class="badge bg-secondary">{{ tag }}</span>
-          {% endfor %}
+          
+          <span class="badge bg-secondary">python</span>
+          
+          <span class="badge bg-secondary">performance</span>
+          
         </div>
         <div class="article-content">
-          {{ content | safe }}
+          <p><strong>What is Apache Arrow?</strong>
+Apache Arrow is a series of libraries that enable large data systems to process and transfer data quickly and efficiently. It is used by AWS Data Wrangler, the python library Pandas, MATLAB and many other technologies. The primary component of Apache Arrow is the in-memory columnar format specification used to represent table-like datasets in-memory.</p>
+<p><strong>The Arrow Columnar format</strong>
+There are two advantages to this format for data processing. Firstly, processing data through this format is very fast. The image below gives a good representation of how data is stored in memory. Secondly, this format is language agnostic. Meaning that transferring data between different programming languages or between different databases is simple. Generally, for processing large amounts of data, a data processing engineer would create custom data structures to represent data sets in memory and would develop serialization interfaces to convert the data structures to different file formats or other data transport interfaces. This resulted in a large amount of wasted time within the development process.</p>
+<p><strong>When would I use Apache Arrow?</strong>
+Apache Arrow is a good choice if you are processing large amounts of structured data, or if you are handling large, structured data transfer between many different connected technologies. For example, a Java application can call a C or C++ algorithm on data that originated in the JVM.</p>
+<p><strong>An example in Python</strong>
+This shows how to read a csv file and process it into the Arrow Columnar format. (For large data sets it will likely be more efficient to use a different file format like Apache Parquet)</p>
+<pre><code class="language-py"># 1. Take some csv data and convert it to a table or array format
+import pyarrow as pa
+import pyarrow.csv as pacsv
+
+# Get the csv in the same file directory
+fn = 'apacheArrowExample0.csv'
+
+# Read the csv file
+table = pacsv.read_csv(fn)
+
+# Create the schema for our csv file as a pyarrow Table
+pa.Table
+id: pa.int32()
+firstname: pa.string()
+lastname: pa.string()
+dateofbirth: pa.date32()
+
+# See that our csv data is formatted as a Apache Arrow Columnar data format
+print(table)
+
+&quot;&quot;&quot;
+pyarrow.Table
+id: int64
+firstname: string
+lastname: string
+dateofbirth: date32[day]
+----
+id: [[1,2,3,4,5,6,7,8,9,10,...]]
+firstname: [[&quot;Coral&quot;,&quot;Lucille&quot;,&quot;Marcy&quot;,&quot;Christian&quot;,&quot;Margarette&quot;,&quot;Vanessa&quot;,&quot;Christal&quot;,&quot;Anallese&quot;,&quot;Aaren&quot;,&quot;Christian&quot;,...]]
+lastname: [[&quot;Killigrew&quot;,&quot;Chick&quot;,&quot;Read&quot;,&quot;Marden&quot;,&quot;Chapland&quot;,&quot;Nedrud&quot;,&quot;Mott&quot;,&quot;Johanna&quot;,&quot;Norrie&quot;,&quot;Bahr&quot;,...]]
+dateofbirth: [[1917-01-15,1900-09-15,2018-03-27,1975-09-24,1929-10-31,1987-12-10,1995-12-26,1981-05-28,1914-07-04,1933-04-08,...]]
+
+&quot;&quot;&quot;
+</code></pre>
+<p>More information about Apache Arrow can be found at <a href="https://arrow.apache.org/">https://arrow.apache.org/</a></p>
+
         </div>
       </div>
     </div>
@@ -63,3 +115,19 @@ title: "{{ title }}"
       </a>
     </div>
   </div>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyToClipboard() {
+      const email = 'adeneilers@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

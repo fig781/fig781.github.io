@@ -1,8 +1,15 @@
----
-layout: base.njk
-title: "{{ title }}"
----
-  <!-- NAVBAR -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>JavaScript Arrow Functions</title>
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
   <nav class="navBar">
     <div class="innerContainer">
       <a href="/" class="logo">
@@ -24,15 +31,72 @@ title: "{{ title }}"
   <article class="container pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h1>{{ title }}</h1>
-        <p class="text-muted small">Published on {{ pubDate | date }}</p>
+        <h1>JavaScript Arrow Functions</h1>
+        <p class="text-muted small">Published on April 24, 2022</p>
         <div class="mb-4">
-          {% for tag in tags %}
-          <span class="badge bg-secondary">{{ tag }}</span>
-          {% endfor %}
+          
+          <span class="badge bg-secondary">javascript</span>
+          
+          <span class="badge bg-secondary">beginner</span>
+          
         </div>
         <div class="article-content">
-          {{ content | safe }}
+          <p><strong>What is an arrow function in JavaScript?</strong>
+Arrow functions are an alternative way of writing functions in JavaScript. There are a few limitations compared to the traditional function that will be discussed in this article.</p>
+<pre><code class="language-js">// Traditional function declaration
+function myFunc(myParam) {
+  return myParam + 1;
+}
+
+// Arrow function declaration
+const myFunc = (myParam) =&gt; {
+  return myParam + 1;
+};
+</code></pre>
+<p>Arrow functions can often be shortened substantially.</p>
+<pre><code class="language-js">// If there is one parameter, then you do not need to include
+// the parenthesis.
+const myFunc = (myParam) =&gt; {
+  return myParam + 1;
+};
+
+// If the functions contents can fit on one line, then you can
+// remove the 'return' keyword and '{}'.
+// In this case, the 'return' is implied.
+const myFunc = (myParam) =&gt; myParam + 1;
+</code></pre>
+<p>It is common to use arrow functions with the built in array methods.</p>
+<pre><code class="language-js">const arr = [1, 2, 3, 4, 5];
+
+const arrMap = arr.map((v) =&gt; v + 1);
+
+const arrFiltered = arr.filter((v) =&gt; v &gt; 3);
+
+arr.forEach((v) =&gt; console.log(v));
+</code></pre>
+<p><strong>The limitations of Arrow functions.</strong></p>
+<p>Arrow functions do not have their own binding of <code>this</code>. As a result, you generally will not want to use them as <code>methods</code> in your objects. A few more things to know:</p>
+<ul>
+<li>They don't have their own binding to <code>arguments</code>, or <code>super</code></li>
+<li>They cannot be used as <code>constructors</code> within classes.</li>
+<li>They likely will not behave as expected with the keywords <code>call</code>, <code>apply</code> and <code>bind</code>.</li>
+</ul>
+<p>Since the arrow function does not have its own binding of <code>this</code>, it cannot reference other attributes or methods in objects. <code>this</code> in an arrow function will always reference the global scope.</p>
+<pre><code class="language-js">const obj = {
+  value: 1,
+  myFunc1: function () {
+    console.log(this.value, this);
+  },
+  myFunc2: () =&gt; {
+    console.log(this.value, this);
+  },
+};
+
+obj.myFunc1(); // 1, obj{...}
+obj.myFunc2(); // undefined, Window{...} or the Global object
+</code></pre>
+<p>For more info, reference the MDN documentation: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN Docs</a></p>
+
         </div>
       </div>
     </div>
@@ -63,3 +127,19 @@ title: "{{ title }}"
       </a>
     </div>
   </div>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyToClipboard() {
+      const email = 'adeneilers@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

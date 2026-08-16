@@ -1,8 +1,15 @@
----
-layout: base.njk
-title: "{{ title }}"
----
-  <!-- NAVBAR -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>What I did this Week: 5/15/22</title>
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
   <nav class="navBar">
     <div class="innerContainer">
       <a href="/" class="logo">
@@ -24,15 +31,28 @@ title: "{{ title }}"
   <article class="container pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h1>{{ title }}</h1>
-        <p class="text-muted small">Published on {{ pubDate | date }}</p>
+        <h1>What I did this Week: 5/15/22</h1>
+        <p class="text-muted small">Published on May 15, 2022</p>
         <div class="mb-4">
-          {% for tag in tags %}
-          <span class="badge bg-secondary">{{ tag }}</span>
-          {% endfor %}
+          
+          <span class="badge bg-secondary">javascript</span>
+          
+          <span class="badge bg-secondary">performance</span>
+          
         </div>
         <div class="article-content">
-          {{ content | safe }}
+          <p>Was not really sure what I wanted to write about, so I thought I would just write about a few of my thoughts I had this week.</p>
+<p><strong>Heroku's free tier</strong>
+I just switched the front end for my Vue app <a href="https://my-coding-stats-com-client.vercel.app/">myCodingStats</a> to Vercel. It was originally hosted on Heroku. On the free tier of Heroku, if a site does not get any requests for 30 minutes, it will sleep. this results in a five second spin up time when someone goes to the site. It is definitely not ideal for the frontend of your site. I am keeping the api hosted on Heroku though. It seems fine if there is a bit of a delay when you first login, as long as you are able to get to the frontend quickly. If I was to remake the whole site, I would likely use Vercel's Edge and serverless functions for my api.</p>
+<p><strong>Next.js build time</strong>
+I worked on my main three projects this week, one written in React, one in Vue, and another in Next. I always serve them locally using whatever command I have in package.json for 'dev'. After switching back and forth between them, I was amazed by how fast Next ran. It would take a few seconds, as opposed to a few minutes. I know that the recent version of the Next compiler was written in Rust, so I am guessing that is why it is so fast. If I was starting a new project, I would likely choose Next, for this reason and others.</p>
+<p>I did a quick comparison of the three projects. Here was the time it took to build the project after serving them locally in 'dev' mode:</p>
+<ul>
+<li>Vue: 01:36</li>
+<li>React: 01:45</li>
+<li>Next: 00:02</li>
+</ul>
+
         </div>
       </div>
     </div>
@@ -63,3 +83,19 @@ title: "{{ title }}"
       </a>
     </div>
   </div>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyToClipboard() {
+      const email = 'adeneilers@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

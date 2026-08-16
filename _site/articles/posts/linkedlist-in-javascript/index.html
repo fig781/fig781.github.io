@@ -1,8 +1,15 @@
----
-layout: base.njk
-title: "{{ title }}"
----
-  <!-- NAVBAR -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>Linked List in JavaScript</title>
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
   <nav class="navBar">
     <div class="innerContainer">
       <a href="/" class="logo">
@@ -24,15 +31,115 @@ title: "{{ title }}"
   <article class="container pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h1>{{ title }}</h1>
-        <p class="text-muted small">Published on {{ pubDate | date }}</p>
+        <h1>Linked List in JavaScript</h1>
+        <p class="text-muted small">Published on March 20, 2022</p>
         <div class="mb-4">
-          {% for tag in tags %}
-          <span class="badge bg-secondary">{{ tag }}</span>
-          {% endfor %}
+          
+          <span class="badge bg-secondary">javascript</span>
+          
+          <span class="badge bg-secondary">algorithms</span>
+          
         </div>
         <div class="article-content">
-          {{ content | safe }}
+          <p><strong>What is a Linked List?</strong>
+A linked list data structure involves a series of Nodes linked together. Each Node will have a data value and a reference to the next Node in the list. In the last Node, the reference will be set to <code>null</code>. Linked lists are not commonly used in front end web development, but they are still very popular for interview coding problems.</p>
+<p><strong>Implementation of a Linked List with a few helper methods</strong></p>
+<pre><code class="language-js">class Node {
+  constructor(data, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  // Inserts a Node into the Linked List
+  insertFirst(data) {
+    this.head = new Node(data, this.head);
+  }
+
+  // Returns the number of nodes
+  size() {
+    let node = this.head;
+    let count = 0;
+
+    while (node) {
+      count++;
+      node = node.next;
+    }
+
+    return count;
+  }
+
+  // Returns the first Node
+  getFirst() {
+    return this.head;
+  }
+
+  // Returns the last Node
+  getLast() {
+    if (!this.head.next) {
+      return null;
+    }
+    let node = this.head;
+    while (node) {
+      if (!node.next) {
+        return node;
+      }
+      node = node.next;
+    }
+  }
+
+  // Removes all Nodes from the Linked List
+  clear() {
+    this.head = null;
+  }
+
+  // Removes the first Node from the Linked List
+  removeFirst() {
+    if (this.head) {
+      this.head = this.head.next;
+    }
+  }
+}
+</code></pre>
+<p>Here it is in use:</p>
+<pre><code class="language-js">let list = new LinkedList();
+list.insertFirst(1);
+list.insertFirst(2);
+list.insertFirst(3);
+// list = {
+//   head: {
+//     data: 3,
+//     next: {
+//       data: 2,
+//       next: {
+//         data: 1,
+//         next: null
+//       }
+//     }
+//   }
+// }
+
+list.getFirst(); // { data: 3, next:... }
+list.getLast(); // { data: 1, next: null }
+list.size(); // 3
+list.removeFirst(); // { head: { data: 2, next:... }}
+list.clear(); // { head: null }
+</code></pre>
+<p>You will notice that a Linked List in JavaScript is simply a series of nested objects. The list will always start with a head, and the last node reference will be <code>null</code>.</p>
+<p><strong>If you are preparing for coding interviews, here are a few coding challenges involving Linked Lists</strong></p>
+<ul>
+<li><a href="https://leetcode.com/problems/linked-list-cycle/">Linked List Cycle</a></li>
+<li><a href="https://leetcode.com/problems/middle-of-the-linked-list/">Middle of the Linked List</a></li>
+<li><a href="https://leetcode.com/problems/palindrome-linked-list/">Palindrome Linked List</a></li>
+<li><a href="https://leetcode.com/problems/remove-linked-list-elements/">Remove Linked List Elements</a></li>
+<li><a href="https://leetcode.com/problems/reverse-linked-list/">Reverse Linked List</a></li>
+</ul>
+
         </div>
       </div>
     </div>
@@ -63,3 +170,19 @@ title: "{{ title }}"
       </a>
     </div>
   </div>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyToClipboard() {
+      const email = 'adeneilers@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>

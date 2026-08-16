@@ -1,8 +1,15 @@
----
-layout: base.njk
-title: "{{ title }}"
----
-  <!-- NAVBAR -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>Javascript Spread Operator (...)</title>
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
   <nav class="navBar">
     <div class="innerContainer">
       <a href="/" class="logo">
@@ -24,15 +31,84 @@ title: "{{ title }}"
   <article class="container pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h1>{{ title }}</h1>
-        <p class="text-muted small">Published on {{ pubDate | date }}</p>
+        <h1>Javascript Spread Operator (...)</h1>
+        <p class="text-muted small">Published on March 6, 2022</p>
         <div class="mb-4">
-          {% for tag in tags %}
-          <span class="badge bg-secondary">{{ tag }}</span>
-          {% endfor %}
+          
+          <span class="badge bg-secondary">javascript</span>
+          
+          <span class="badge bg-secondary">beginner</span>
+          
         </div>
         <div class="article-content">
-          {{ content | safe }}
+          <p><strong>What is the Spread Operator?</strong>
+This syntax is used to succinctly pass multiple values from either an Array or Object to an expression where elements are expected. Examples are the best way to show this.</p>
+<p><strong>Arrays</strong></p>
+<p>Combining arrays</p>
+<pre><code class="language-js">let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let combinedArr = [...arr1, ...arr2];
+//  combinedArr = [1, 2, 3, 4, 5, 6]
+</code></pre>
+<pre><code class="language-js">let arr1 = [1, 2, 3];
+let arr2 = [4, ...arr1, 5, 6];
+//  arr2 = [4, 1, 2, 3, 5, 6]
+</code></pre>
+<p>Copying an array</p>
+<pre><code class="language-js">let arr = [1, 2, 3];
+let arrCopy = [...arr];
+//  arrCoppy = [1, 2, 3]
+//  changing arr will not effect arrCopy
+</code></pre>
+<p><strong>Objects</strong>
+Merge Objects</p>
+<pre><code class="language-js">let obj1 = { id: 1, name: 'Aden' };
+let obj2 = { birthday: '2022-02-04', hairColor: 'Brown' };
+let combinedObj = { ...obj1, ...obj2 };
+//  combinedObj = { id: 1, name: 'Aden', birthday: '2022-02-04', hairColor: 'Brown' }
+</code></pre>
+<p>Note: Merging objects with like attributes may not behave the way you expect</p>
+<pre><code class="language-js">let obj1 = { id: 1, name: 'Aden' };
+let obj2 = { id: 2, name: 'Bob' };
+let combinedObj = { ...obj1, ...obj2 };
+//  combinedObj = { id: 2, name: 'Bob' }
+</code></pre>
+<p><strong>A Common use case in React</strong></p>
+<pre><code class="language-js">import { useState } from 'react';
+
+const App = () =&gt; {
+  const [input, setInput] = useState('');
+  const [list, setList] = useState([]);
+
+  const addButtonClick = () =&gt; {
+    // We use the spread operator to add
+    // an item to the end of the array
+    setList((list) =&gt; [...list, input]);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        type='text'
+        value={input}
+        onChange={(e) =&gt; {
+          setInput(e.target.value);
+        }}
+      /&gt;
+      &lt;button onClick={addButtonClick}&gt;Add&lt;/button&gt;
+      &lt;ul&gt;
+        {list.map((item) =&gt; {
+          return &lt;li key={Math.random()}&gt;{item}&lt;/li&gt;;
+        })}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default App;
+</code></pre>
+<p>More information about the spread syntax can be found in the MDN docs: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax</a></p>
+
         </div>
       </div>
     </div>
@@ -63,3 +139,19 @@ title: "{{ title }}"
       </a>
     </div>
   </div>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyToClipboard() {
+      const email = 'adeneilers@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>
