@@ -1,6 +1,7 @@
 ```
 # Dependencies
 node_modules/
+_site/
 
 # Build artifacts
 dist/
