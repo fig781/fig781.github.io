@@ -6,16 +6,7 @@
   --color-paragraph-secondary: lightslategrey;
   
   /* Default (light mode) colors */
-  --body-bg: #ffffff;
-  --body-text: #212529;
-  --card-bg: #ffffff;
-  --footer-bg: #d1d1d1;
-  --footer-text: #1b1b1b;
-}
-
-/* Dark mode colors */
-[data-theme="dark"] {
-  --body-bg: #1a1a1a;
+  --body-bg: #282D30;
   --body-text: #f0f0f0;
   --card-bg: #2d2d2d;
   --footer-bg: #2d2d2d;
@@ -32,8 +23,8 @@ body {
   margin: 0;
   font-family: var(--paragraph-font);
   scroll-behavior: smooth;
-  background-color: var(--body-bg);
-  color: var(--body-text);
+  background-color: var(--body-bg) !important;
+  color: var(--body-text) !important;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -82,8 +73,8 @@ textarea {
 
 /* HERO SECTION */
 .hero {
-  background-image: url('public/Bgs/heroBg3840.svg');
-  background-color: white;
+  background-image: url('public/Bgs/heroBg3840Dark.svg');
+  background-color: var(--bg-color);
   height: 100vh;
   background-size: cover;
 }
@@ -160,15 +151,6 @@ textarea {
   margin-right: 20px;
 }
 
-/* DEVELOPMENT */
-.customDevCardsContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  gap: 16px;
-}
-
 .customFlexContainer {
   display: flex;
   flex-direction: row;
@@ -195,18 +177,6 @@ textarea {
   width: calc(50% - 8px);
 }
 
-/* CONTACT (removed but keeping styles for reference if needed) */
-.contactSection {
-  background-color: var(--bg-color);
-  background-image: url('public/Bgs/contactBg3840.svg');
-  background-size: cover;
-}
-
-#contactForm {
-  width: 100%;
-  max-width: 500px;
-}
-
 /* FOOTER */
 .footer {
   text-align: center;
@@ -217,6 +187,7 @@ textarea {
 .card-body {
   position: relative;
   z-index: 1;
+  background-color: var(--card-bg);
 }
 
 .btnProjects {
@@ -319,7 +290,7 @@ textarea {
 /* FOOTER ALTERNATE */
 .footer-alt {
   text-align: center;
-  background-color: #d1d1d1;
+  background-color: #282D30;
   padding: 30px 20px;
 }
 
@@ -358,11 +329,7 @@ textarea {
 /* MEDIA QUERIES */
 @media (max-width: 1920px) {
   .hero {
-    background-image: url('public/Bgs/heroBg1920.svg');
-  }
-
-  .contactSection {
-    background-image: url('public/Bgs/contactBg1920.svg');
+    background-image: url('public/Bgs/heroBg1920Dark.svg');
   }
 }
 
@@ -401,10 +368,6 @@ textarea {
   }
 
   .hero {
-    background-image: url('public/Bgs/heroBg576.svg');
-  }
-
-  .contactSection {
-    background-image: url('public/Bgs/contactBg576.svg');
+    background-image: url('public/Bgs/heroBg576Dark.svg');
   }
 }
