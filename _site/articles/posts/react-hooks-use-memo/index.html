@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+  <title>React Hooks: useMemo()</title>
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVBAR -->
+  <nav class="navBar">
+    <div class="innerContainer">
+      <a href="/" class="logo">
+        <h3>Aden Eilers</h3>
+      </a>
+      <div class="d-flex align-items-center">
+        <a href="/" class="btn btnWhite">Home</a>
+        <a href="/articles/" class="btn btnWhite">Articles</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ARTICLE CONTENT -->
+  <article class="container pt-5 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1>React Hooks: useMemo()</h1>
+        <p class="text-muted small">Published on February 13, 2022</p>
+        <div class="mb-4">
+          
+          <span class="badge bg-secondary">react</span>
+          
+          <span class="badge bg-secondary">javascript</span>
+          
+        </div>
+        <div class="article-content">
+          <p><strong>What are React hooks?</strong>
+They are functions in React that allow you to add react functionality to function based components.</p>
+<p><strong>What is the useMemo hook?</strong>
+This hook will only run if its dependencies change. This is especially useful in preventing expensive operations from needlessly running.</p>
+<ul>
+<li>For those that are familiar with Vue.js, the useMemo hook function in React serves the same purpose as computed properties in Vue.</li>
+</ul>
+<p>The syntax follows a common pattern:</p>
+<pre><code class="language-jsx">const functionToRun = (value) =&gt; return value + 1;
+const computedValue = useMemo(() =&gt; functionToRun(value),[value]);
+</code></pre>
+<p>A few things to note:</p>
+<ul>
+<li><code>functionToRun()</code> needs to return a value.</li>
+<li><code>[value]</code> is the dependency. There can be multiple dependencies ex: <code>[value1, value2, value3]</code>. Any time the dependencies change, the useMemo function will run.</li>
+<li>If the dependency array is left empty <code>[]</code>, useMemo will only execute the function on the initial component render.</li>
+</ul>
+<p>Here is a practicle example using the useMemo hook:</p>
+<pre><code class="language-jsx">import { useState, useEffect, useMemo } from 'react';
+
+const App = () =&gt; {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() =&gt; {
+    const fetchData = async () =&gt; {
+      //Fetches a list of ten users
+      const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+      // If the HTTP status code is 200-299
+      if (response.ok) {
+        const json = await response.json();
+        setUsers(json);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  //Only runs when users changes
+  const profiles = useMemo(() =&gt; {
+    users.map((user) =&gt; {
+      return &lt;Profile key={user.id} user={user} /&gt;;
+    });
+  }, [users]);
+
+  return &lt;div&gt;{profiles}&lt;/div&gt;;
+};
+
+const Profile = ({ user }) =&gt; {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{user.name}&lt;/h1&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default App;
+</code></pre>
+<p>More information about useMemo can be found in the React docs: <a href="https://reactjs.org/docs/hooks-reference.html#usememo">https://reactjs.org/docs/hooks-reference.html#usememo</a></p>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <div class="footer-alt mt-5">
+    <div>
+      <a class="linkIcons" href="https://github.com/fig781" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 20px;">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+        </svg>
+      </a>
+      <a class="linkIcons" href="https://www.linkedin.com/in/aden-eilers/" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 20px;">
+          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401m-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.82 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.357 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+        </svg>
+      </a>
+      <a class="linkIcons" href="https://twitter.com/AdenEilers" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" style="margin-right: 20px;">
+          <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+        </svg>
+      </a>
+      <a class="linkIcons" href="https://dev.to/fig781" target="_blank" rel="noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M11.987 3.859c-.195-.125-.485-.192-.82-.192h-6.34c-.925 0-1.608.24-2.087.732-.479.492-.72 1.212-.72 2.203v3.006c0 .99.237 1.723.71 2.23.474.507 1.17.76 2.07.76h1.787l.686.938c.14.196.32.293.53.293.07 0 .14-.01.21-.03.26-.08.44-.26.54-.55l.42-1.65h1.02c.33 0 .62-.07.82-.19.2-.13.3-.32.3-.58V4.44c0-.26-.1-.46-.3-.58zM9.98 9.27h-1.4v1.14l-1.12-1.14H4.82c-.26 0-.45-.06-.58-.18-.13-.12-.19-.32-.19-.59V6.66c0-.27.06-.47.19-.59.13-.12.32-.18.58-.18h2.64l1.12-1.14v1.14h1.4c.26 0 .45.06.58.18.13.12.19.32.19.59v1.91c0 .27-.06.47-.19.59-.13.12-.32.18-.58.18z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function copyToClipboard() {
+      const email = 'adeneilers@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  </script>
+</body>
+</html>
