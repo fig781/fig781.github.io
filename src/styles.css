@@ -15,6 +15,7 @@
 
 * {
   box-sizing: border-box;
+  color: var(--body-text) !important;
 }
 
 html,
@@ -177,6 +178,10 @@ textarea {
   width: calc(50% - 8px);
 }
 
+.card {
+  border: none !important;
+}
+
 /* FOOTER */
 .footer {
   text-align: center;
@@ -245,7 +250,7 @@ textarea {
 /* BADGE STYLES */
 .badge {
   background-color: #e9ecef;
-  color: #212529;
+  color: #212529 !important;
   padding: 0.5em 0.75em;
   margin-right: 0.25rem;
   margin-bottom: 0.25rem;
@@ -256,7 +261,7 @@ textarea {
 
 /* NAVBAR */
 .navBar {
-  background-color: #d1d1d1;
+  background-color: var(--body-bg) !important;
   display: flex;
   justify-content: center;
   padding: 10px 20px;
