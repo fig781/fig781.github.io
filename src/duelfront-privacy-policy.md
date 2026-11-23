@@ -1,3 +1,8 @@
+---
+layout: page.njk
+title: Duelfront privacy policy
+permalink: /duelfront-privacy-policy/
+---
 # Duelfront privacy policy
 
 Last updated: November 22, 2026
