@@ -24,7 +24,7 @@ Uninstalling the app, or clearing its data, deletes them.
 
 ## Children
 
-Duelfront is not directed at children under 13, and it collects no information from anyone.
+It collects no information from anyone.
 
 ## Changes
 
